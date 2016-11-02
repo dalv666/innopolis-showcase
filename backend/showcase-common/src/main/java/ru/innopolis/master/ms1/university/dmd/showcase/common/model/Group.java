@@ -38,6 +38,17 @@ public class Group implements Serializable {
     @OneToOne
     private Picture picture;
 
+    public Group(long id,String name, LocalDate date, String janr, Picture picture) {
+        this.id = id;
+        this.name = name;
+        this.date = date;
+        this.janr = janr;
+        this.picture = picture;
+    }
+
+    public Group() {
+    }
+
     public Picture getPicture() {
         return picture;
     }

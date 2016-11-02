@@ -19,8 +19,14 @@ public class LocationServiceImpl implements LocationService {
         return locationDAO.save(object);
     }
 
-    public Location delete(Long objectId) {
-        return null;
+
+    public Location delete(Long roomId) {
+        Location location = findById(roomId);
+/*        if (room == null) {
+            throw new NotFoundException(roomId, Room.class);
+        }*/
+        locationDAO.delete(location);
+        return location;
     }
 
     public List<Location> findAll() {
@@ -28,10 +34,14 @@ public class LocationServiceImpl implements LocationService {
     }
 
     public Location findById(Long objectId) {
-        return null;
+        return locationDAO.findOne(objectId);
     }
 
     public Location update(Location object) {
-        return null;
+        Location location = locationDAO.findOne(object.getId());
+/*        if (location == null) {
+            throw new NotFoundException(location.getId(), Room.class);
+        }*/
+        return locationDAO.save(location);
     }
 }

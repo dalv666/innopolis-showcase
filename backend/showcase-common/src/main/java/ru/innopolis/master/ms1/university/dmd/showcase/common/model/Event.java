@@ -1,5 +1,7 @@
 package ru.innopolis.master.ms1.university.dmd.showcase.common.model;
 
+import org.hibernate.annotations.Formula;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -48,11 +50,42 @@ public class Event implements Serializable {
     @OneToOne
     private Picture picture;
 
+    @Formula("(select count(*) from usr_event e where e.events_evt_id = EVT_ID)")
+    private int usersCount;
+
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "events")
     private Set<User> users;
 
-    public Set<User> getUsers() {
-        return users;
+    @Basic
+    @Column(name = "EVT_TYPE")
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getUsersCount() {
+        return usersCount;
+    }
+
+    public Event(long id, LocalDate date, int capacity, String title, double price, long duration, String description, Location location, Picture picture, String type) {
+        this.type = type;
+        this.id = id;
+        this.date = date;
+        this.capacity = capacity;
+        this.title = title;
+        this.price = price;
+        this.duration = duration;
+        this.description = description;
+        this.location = location;
+        this.picture = picture;
+    }
+
+    public Event() {
     }
 
     public void setUsers(Set<User> users) {

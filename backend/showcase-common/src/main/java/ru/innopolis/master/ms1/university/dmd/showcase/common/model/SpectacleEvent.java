@@ -1,6 +1,7 @@
 package ru.innopolis.master.ms1.university.dmd.showcase.common.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -9,12 +10,29 @@ import java.util.List;
 @Entity
 @Table(name = "SPC_EVENT")
 public class SpectacleEvent extends Event {
-    //TODO: END IT
+
     @ManyToOne
     private Person director;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Group> authors;
+    @ManyToOne
+    private Group authors;
+
+
+    public SpectacleEvent(long id, LocalDate date, int capacity, String title, double price, long duration, String description, Location location, Picture picture, Person director, String type) {
+        super(id, date, capacity, title, price, duration, description, location, picture, type);
+        this.director = director;
+    }
+
+    public Group getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(Group authors) {
+        this.authors = authors;
+    }
+
+    public SpectacleEvent() {
+    }
 
     public Person getDirector() {
         return director;

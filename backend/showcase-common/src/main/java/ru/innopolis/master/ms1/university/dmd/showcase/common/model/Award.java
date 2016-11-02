@@ -23,4 +23,37 @@ public class Award implements Serializable {
     @Basic
     @Column(name = "AWD_DATE", nullable = false)
     private LocalDate date;
+
+    public Award(long id, String name, LocalDate date) {
+        this.id = id;
+        this.name = name;
+        this.date = date;
+    }
+
+    public Award() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
 }

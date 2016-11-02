@@ -20,8 +20,14 @@ public class UserServiceImpl implements UserService {
         return userDAO.save(object);
     }
 
-    public User delete(Long objectId) {
-        return null;
+
+    public User delete(Long roomId) {
+        User user = findById(roomId);
+/*        if (room == null) {
+            throw new NotFoundException(roomId, Room.class);
+        }*/
+        userDAO.delete(user);
+        return user;
     }
 
     public List<User> findAll() {
@@ -29,10 +35,14 @@ public class UserServiceImpl implements UserService {
     }
 
     public User findById(Long objectId) {
-        return null;
+        return userDAO.findOne(objectId);
     }
 
     public User update(User object) {
-        return null;
+        User user = userDAO.findOne(object.getId());
+/*        if (user == null) {
+            throw new NotFoundException(user.getId(), Room.class);
+        }*/
+        return userDAO.save(user);
     }
 }

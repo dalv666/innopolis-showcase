@@ -22,6 +22,15 @@ public class City implements Serializable {
     @OneToOne
     private Picture picture;
 
+    public City(long id, Picture picture, String name) {
+        this.id = id;
+        this.name = name;
+        this.picture = picture;
+    }
+
+    public City() {
+    }
+
     public String getName() {
         return name;
     }

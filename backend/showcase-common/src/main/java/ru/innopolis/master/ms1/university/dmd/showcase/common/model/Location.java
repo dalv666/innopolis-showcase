@@ -34,4 +34,63 @@ public class Location implements Serializable {
     @OneToOne
     private City city;
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public long getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(long longitude) {
+        this.longitude = longitude;
+    }
+
+    public long getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(long latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    public Location(long id, String name, long longitude, long latitude, String description, City city) {
+        this.id = id;
+        this.name = name;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.description = description;
+        this.city = city;
+    }
+
+    public Location() {
+    }
 }

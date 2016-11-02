@@ -19,8 +19,14 @@ public class GroupServiceImpl implements GroupService {
         return groupDAO.save(object);
     }
 
-    public Group delete(Long objectId) {
-        return null;
+
+    public Group delete(Long roomId) {
+        Group group = findById(roomId);
+/*        if (room == null) {
+            throw new NotFoundException(roomId, Room.class);
+        }*/
+        groupDAO.delete(group);
+        return group;
     }
 
     public List<Group> findAll() {
@@ -28,10 +34,14 @@ public class GroupServiceImpl implements GroupService {
     }
 
     public Group findById(Long objectId) {
-        return null;
+        return groupDAO.findOne(objectId);
     }
 
     public Group update(Group object) {
-        return null;
+        Group group = groupDAO.findOne(object.getId());
+/*        if (group == null) {
+            throw new NotFoundException(group.getId(), Room.class);
+        }*/
+        return groupDAO.save(group);
     }
 }

@@ -20,8 +20,14 @@ public class PictureServiceImpl implements PictureService {
         return pictureDAO.save(object);
     }
 
-    public Picture delete(Long objectId) {
-        return null;
+
+    public Picture delete(Long roomId) {
+        Picture picture = findById(roomId);
+/*        if (room == null) {
+            throw new NotFoundException(roomId, Room.class);
+        }*/
+        pictureDAO.delete(picture);
+        return picture;
     }
 
     public List<Picture> findAll() {
@@ -33,6 +39,12 @@ public class PictureServiceImpl implements PictureService {
     }
 
     public Picture update(Picture object) {
-        return null;
+        Picture picture = pictureDAO.findOne(object.getId());
+/*        if (picture == null) {
+            throw new NotFoundException(picture.getId(), Room.class);
+        }*/
+        return pictureDAO.save(picture);
+
+
     }
 }

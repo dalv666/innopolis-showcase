@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.innopolis.master.ms1.university.dmd.showcase.common.model.Event;
 import ru.innopolis.master.ms1.university.dmd.showcase.service.service.EventService;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -19,7 +20,9 @@ public class EventRestController {
 
     @GetMapping("/events")
     public List getCustomers() {
-        return eventService.findAll();
+        List<Event> all = eventService.findAll();
+        Collections.shuffle(all);
+        return all;
     }
 
     @GetMapping("/event/{id}")
@@ -27,4 +30,9 @@ public class EventRestController {
         return eventService.findById(id);
     }
 
+
+    @GetMapping("/event/{id}/users/")
+    public List getUsers(@PathVariable long id) {
+        return eventService.getEventMembers(id, 0, 20);
+    }
 }

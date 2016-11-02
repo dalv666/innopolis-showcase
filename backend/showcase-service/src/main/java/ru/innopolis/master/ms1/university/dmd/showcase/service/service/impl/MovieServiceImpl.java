@@ -19,8 +19,14 @@ public class MovieServiceImpl implements MovieService {
         return movieDAO.save(object);
     }
 
-    public Movie delete(Long objectId) {
-        return null;
+
+    public Movie delete(Long roomId) {
+        Movie movie = findById(roomId);
+/*        if (room == null) {
+            throw new NotFoundException(roomId, Room.class);
+        }*/
+        movieDAO.delete(movie);
+        return movie;
     }
 
     public List<Movie> findAll() {
@@ -28,10 +34,14 @@ public class MovieServiceImpl implements MovieService {
     }
 
     public Movie findById(Long objectId) {
-        return null;
+        return movieDAO.findOne(objectId);
     }
 
     public Movie update(Movie object) {
-        return null;
+        Movie movie = movieDAO.findOne(object.getId());
+/*        if (movie == null) {
+            throw new NotFoundException(movie.getId(), Room.class);
+        }*/
+        return movieDAO.save(movie);
     }
 }

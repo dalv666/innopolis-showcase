@@ -20,8 +20,14 @@ public class SpectacleEventServiceImpl implements SpectacleEventService {
         return spectacleEventDao.save(object);
     }
 
-    public SpectacleEvent delete(Long objectId) {
-        return null;
+
+    public SpectacleEvent delete(Long roomId) {
+        SpectacleEvent event = findById(roomId);
+/*        if (room == null) {
+            throw new NotFoundException(roomId, Room.class);
+        }*/
+        spectacleEventDao.delete(event);
+        return event;
     }
 
     public List<SpectacleEvent> findAll() {
@@ -29,10 +35,14 @@ public class SpectacleEventServiceImpl implements SpectacleEventService {
     }
 
     public SpectacleEvent findById(Long objectId) {
-        return null;
+        return spectacleEventDao.findOne(objectId);
     }
 
     public SpectacleEvent update(SpectacleEvent object) {
-        return null;
+        SpectacleEvent event = spectacleEventDao.findOne(object.getId());
+/*        if (event == null) {
+            throw new NotFoundException(event.getId(), Room.class);
+        }*/
+        return spectacleEventDao.save(event);
     }
 }

@@ -20,8 +20,14 @@ public class AwardServiceImpl implements AwardService {
         return awardDAO.save(object);
     }
 
-    public Award delete(Long objectId) {
-        return null;
+
+    public Award delete(Long roomId) {
+        Award award = findById(roomId);
+/*        if (room == null) {
+            throw new NotFoundException(roomId, Room.class);
+        }*/
+        awardDAO.delete(award);
+        return award;
     }
 
     public List<Award> findAll() {
@@ -29,10 +35,16 @@ public class AwardServiceImpl implements AwardService {
     }
 
     public Award findById(Long objectId) {
-        return null;
+        return awardDAO.findOne(objectId);
     }
 
     public Award update(Award object) {
-        return null;
+        Award award = awardDAO.findOne(object.getId());
+/*        if (award == null) {
+            throw new NotFoundException(award.getId(), Room.class);
+        }*/
+        return awardDAO.save(award);
+
+
     }
 }

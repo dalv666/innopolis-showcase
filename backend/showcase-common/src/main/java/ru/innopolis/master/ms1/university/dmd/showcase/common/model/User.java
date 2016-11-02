@@ -62,6 +62,20 @@ public class User implements Serializable {
                 '}';
     }
 
+    public User(long id, String firstName, String secondName, String login, String password, LocalDate regDate, String email, Picture avatar) {
+        this.id = id;
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.login = login;
+        this.password = password;
+        this.regDate = regDate;
+        this.email = email;
+        this.avatar = avatar;
+    }
+
+    public User() {
+    }
+
     public Picture getAvatar() {
         return avatar;
     }

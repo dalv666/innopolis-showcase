@@ -20,8 +20,14 @@ public class MovieEventServiceImpl implements MovieEventService {
         return movieEventDAO.save(object);
     }
 
-    public MovieEvent delete(Long objectId) {
-        return null;
+
+    public MovieEvent delete(Long roomId) {
+        MovieEvent movieEvent = findById(roomId);
+/*        if (room == null) {
+            throw new NotFoundException(roomId, Room.class);
+        }*/
+        movieEventDAO.delete(movieEvent);
+        return movieEvent;
     }
 
     public List<MovieEvent> findAll() {
@@ -29,10 +35,14 @@ public class MovieEventServiceImpl implements MovieEventService {
     }
 
     public MovieEvent findById(Long objectId) {
-        return null;
+        return movieEventDAO.findOne(objectId);
     }
 
     public MovieEvent update(MovieEvent object) {
-        return null;
+        MovieEvent movieEvent = movieEventDAO.findOne(object.getId());
+/*        if (movieEvent == null) {
+            throw new NotFoundException(movieEvent.getId(), Room.class);
+        }*/
+        return movieEventDAO.save(movieEvent);
     }
 }

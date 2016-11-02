@@ -25,6 +25,7 @@ export class Event {
     duration: number;
     location: string;
     picture: string;
+    type: string;
 }
 
 export class RegDate {

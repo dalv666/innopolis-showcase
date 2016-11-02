@@ -19,8 +19,14 @@ public class CityServiceImpl implements CityService {
         return cityDAO.save(object);
     }
 
-    public City delete(Long objectId) {
-        return null;
+
+    public City delete(Long roomId) {
+        City city = findById(roomId);
+/*        if (room == null) {
+            throw new NotFoundException(roomId, Room.class);
+        }*/
+        cityDAO.delete(city);
+        return city;
     }
 
     public List<City> findAll() {
@@ -28,10 +34,14 @@ public class CityServiceImpl implements CityService {
     }
 
     public City findById(Long objectId) {
-        return null;
+        return cityDAO.findOne(objectId);
     }
 
     public City update(City object) {
-        return null;
+        City city = cityDAO.findOne(object.getId());
+/*        if (city == null) {
+            throw new NotFoundException(city.getId(), Room.class);
+        }*/
+        return cityDAO.save(city);
     }
 }

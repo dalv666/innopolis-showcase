@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import ru.innopolis.master.ms1.university.dmd.showcase.common.model.User;
 
 @Repository
-public interface UserDAO extends CrudRepository<User, Long> {
+public interface UserDAO extends CrudRepository<User, Long>{
 
 }

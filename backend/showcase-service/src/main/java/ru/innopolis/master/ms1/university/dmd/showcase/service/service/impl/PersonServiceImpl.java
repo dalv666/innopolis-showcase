@@ -20,8 +20,14 @@ public class PersonServiceImpl implements PersonService {
         return personDAO.save(object);
     }
 
-    public Person delete(Long objectId) {
-        return null;
+
+    public Person delete(Long roomId) {
+        Person person = findById(roomId);
+/*        if (room == null) {
+            throw new NotFoundException(roomId, Room.class);
+        }*/
+        personDAO.delete(person);
+        return person;
     }
 
     public List<Person> findAll() {
@@ -29,10 +35,16 @@ public class PersonServiceImpl implements PersonService {
     }
 
     public Person findById(Long objectId) {
-        return null;
+        return personDAO.findOne(objectId);
     }
 
     public Person update(Person object) {
-        return null;
+        Person person = personDAO.findOne(object.getId());
+/*        if (person == null) {
+            throw new NotFoundException(person.getId(), Room.class);
+        }*/
+        return personDAO.save(person);
+
+
     }
 }
