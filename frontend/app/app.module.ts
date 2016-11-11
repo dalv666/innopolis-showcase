@@ -5,6 +5,7 @@ import { FormsModule }   from '@angular/forms';
 import { EventDetailComponent} from './component/event-detail.component';
 import { LoginComponent} from './component/login.component';
 import { EventsComponent} from './component/events.component';
+import { SearchComponent } from './component/search.component';
 import { RouterModule }   from '@angular/router';
 import { MenuComponent} from './component/menu.component';
 import { ShowcaseRoutingModule } from './showcase-routing.module';
@@ -18,7 +19,7 @@ import { HttpModule }    from '@angular/http';
     ShowcaseRoutingModule,
     HttpModule
    ],
-  declarations: [ AppComponent, EventDetailComponent, EventsComponent, MenuComponent, LoginComponent ],
+  declarations: [ AppComponent, EventDetailComponent, EventsComponent, MenuComponent, LoginComponent,SearchComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

@@ -8,7 +8,7 @@
       <div class="card card-block">
           <h4 class="card-title text-xs-center">{{event.usersCount}} visitors <small class="text-muted" ><a class="card-link">[all]</a></small></h4>
           <hr>
-          <div *ngFor="let user of users; let i=index" class="col-md-4 text-xs-center">
+          <div *ngFor="let user of users; let i=index" class="col-md-4 col-xs-4 text-xs-center">
             <template [ngIf]="i<3">
               <img src="{{user.avatar.picture}}" class="img-fluid rounded-circle" style="height:32px;margin: auto;">
               <p>{{user.login}}</p>
@@ -46,13 +46,13 @@
         <hr>
         <p>{{event.description}}</p>
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 col-xs-3">
               <i class="fa fa-group fa-lg"></i> {{event.capacity}}
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-xs-4">
               <i class="fa fa-money fa-lg"></i> {{event.price}}$
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-xs-5">
               <i class="fa fa-calendar-check-o fa-lg"></i> <span class="img-rounded" style="background-color:#eee;padding: 3px;border-radius:4px;">{{event.date.dayOfMonth}}/{{event.date.monthValue}}/{{event.date.year}}</span>
             </div>
           </div>

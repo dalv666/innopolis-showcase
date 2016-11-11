@@ -2,6 +2,7 @@ import { NgModule }      from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 
 import { EventsComponent } from './component/events.component';
+import { SearchComponent } from './component/search.component';
 import { EventDetailComponent} from './component/event-detail.component';
 import { AppComponent } from './component/app.component';
 import { MenuComponent} from './component/menu.component';
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'menu',
     component: MenuComponent
+  },  
+  {
+      path: 'search',
+      component: SearchComponent
   },
   {
     path: 'event/:id',

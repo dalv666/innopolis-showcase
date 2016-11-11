@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var events_component_1 = require('./component/events.component');
+var search_component_1 = require('./component/search.component');
 var event_detail_component_1 = require('./component/event-detail.component');
 var menu_component_1 = require('./component/menu.component');
 var login_component_1 = require('./component/login.component');
@@ -27,6 +28,10 @@ var routes = [
     {
         path: 'menu',
         component: menu_component_1.MenuComponent
+    },
+    {
+        path: 'search',
+        component: search_component_1.SearchComponent
     },
     {
         path: 'event/:id',
