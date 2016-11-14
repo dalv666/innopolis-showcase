@@ -20,8 +20,7 @@ public class Picture implements Serializable {
     @Column(name = "PIC_LINK")
     private String picture;
 
-    public Picture(long id, String picture) {
-        this.id = id;
+    public Picture(String picture) {
         this.picture = picture;
     }
 
