@@ -1,0 +1,34 @@
+new City(44 , PICTURES[11],     "Astrakhan"          /*, Russia*/       ), http://www.meros.org/uploads/gallery/64/51/03/6465110380d1487aa4d8a8d60ada3128.jpg
+new City(64 , PICTURES[11],     "Barnaul"            /*, Russia*/       ), https://img-fotki.yandex.ru/get/64120/169643165.13/0_10d4c7_15294d7e_XL.jpg
+new City(125, PICTURES[11],     "Chelyabinsk"        /*, Russia*/       ), http://img-fotki.yandex.ru/get/6839/30348152.197/0_80d0d_8d5e86fd_orig
+new City(256, PICTURES[11],     "Irkutsk"            /*, Russia*/       ), http://www.i-irk.com/upload/gallery/vechernee_foto_irkutska_(2)._71013_70.jpg
+new City(259, PICTURES[11],     "Izhevsk"            /*, Russia*/       ), http://fb.ru/misc/i/gallery/5067/474776.jpg
+new City(300, PICTURES[11],     "Kazan"              /*, Russia*/       ), http://img.travel.ru/images2/2004/06/object37298/dvorec_zemledelzev.jpg
+new City(303, PICTURES[11],     "Khabarovsk"         /*, Russia*/       ), http://bestvuz.ru/images/goroda/habarovsk1.jpg
+new City(319, PICTURES[11],     "Krasnodar"          /*, Russia*/       ), http://kudago.com/media/images/news/03/68/03683b7cf4d02da61dc69bb0165dca10.jpg
+new City(320, PICTURES[11],     "Krasnoyarsk"        /*, Russia*/       ), http://rprs.sfu-kras.ru/sites/default/files/kommunalnyy_most.jpg
+new City(342, PICTURES[11],     "Lipetsk"            /*, Russia*/       ), http://nesiditsa.ru/wp-content/uploads/2012/07/125.jpg
+new City(363, PICTURES[11],     "Makhachkala"        /*, Russia*/       ), http://www.bankgorodov.ru/public//photos/places/Mah-44546.jpg
+new City(403, PICTURES[11],     "Moscow"             /*, Russia*/       ), https://travel.rambler.ru/media/original_images/54aaf2696fb1e.jpg
+new City(408, PICTURES[11],     "Naberezhnyye"       /*, Russia*/       ), http://stranadetstva30.ru/assets/images/naberezhnye-chelny.jpg
+new City(430, PICTURES[11],     "Nizhniy"            /*, Russia*/       ), http://livepixel.org/wp-content/uploads/2015/03/nnovgorod05.jpeg
+new City(433, PICTURES[11],     "Novokuznetsk"       /*, Russia*/       ), http://novokuznetsk.go2all.ru/imgs/55/1/83986.jpg
+new City(434, PICTURES[11],     "Novosibirsk"        /*, Russia*/       ), http://www.transsiberianfestival.com/media/upload/novosibirsk/Novosib_1.jpg
+new City(439, PICTURES[11],     "Omsk"               /*, Russia*/       ), http://nesiditsa.ru/wp-content/uploads/2012/09/516.jpg
+new City(441, PICTURES[11],     "Orenburg"           /*, Russia*/       ), http://nesiditsa.ru/wp-content/uploads/2012/07/Nochnoy-Orenburg.jpg
+new City(458, PICTURES[11],     "Penza"              /*, Russia*/       ), http://www.my-miir.ru/upload/О%20городе2.jpg
+new City(459, PICTURES[11],     "Perm"               /*, Russia*/       ), http://ppjournal.ru/img/dostopr/dostoprimechatelnosti-permi.jpg
+new City(508, PICTURES[11],     "Rostov-na-Donu"     /*, Russia*/       ), http://mama-predprinimatel.ru/upload/iblock/6be/6be0936fadf9bb7fffd37b21c0ccf987.png
+new City(510, PICTURES[11],     "Ryazan"             /*, Russia*/       ), http://strana.ru/media/images/uploaded/gallery_promo21250667.jpg
+new City(512, PICTURES[11],     "SaintPetersburg"    /*, Russia*/       ), http://sakvoyage.perm.ru/userfiles/Image/Spb_osen.jpg
+new City(518, PICTURES[11],     "Samara"             /*, Russia*/       ), http://ntt.com.ru/images/gd/samara.jpeg
+new City(541, PICTURES[11],     "Saratov"            /*, Russia*/       ), http://travelask.ru/system/images/files/000/052/437/wysiwyg/из_липок.jpg?1442480294
+new City(606, PICTURES[11],     "Tolyatti"           /*, Russia*/       ), https://kudago.com/media/images/place/04/5c/045c736f8f8ec02ce86607af82580d9c.jpg
+new City(615, PICTURES[11],     "Tyumen"             /*, Russia*/       ), http://tonb.ru/local_history/local_history_images/78.jpg
+new City(617, PICTURES[11],     "Ufa"                /*, Russia*/       ), http://nt22.ru/images/ufa-bashkiria.jpg
+new City(620, PICTURES[11],     "Ulyanovsk"          /*, Russia*/       ), http://strana.ru/media/images/uploaded/gallery_promo20837434.jpg
+new City(633, PICTURES[11],     "Vladivostok"        /*, Russia*/       ), http://deita.ru/upload/iblock/b03/most_zolotoy_rog.jpg
+new City(634, PICTURES[11],     "Volgograd"          /*, Russia*/       ), http://fifa-worldcup2018.ru/images/volgograd_dostop1.jpg
+new City(635, PICTURES[11],     "Voronezh"           /*, Russia*/       ),
+new City(661, PICTURES[11],     "Yaroslavl"          /*, Russia*/       ), http://kobalt-tur.ru/images/yaroslavlzh.jpg
+new City(663, PICTURES[11],     "Yekaterinburg"      /*, Russia*/       ), http://mcselect.ru/wp-content/uploads/2015/07/excursion-spain.jpg

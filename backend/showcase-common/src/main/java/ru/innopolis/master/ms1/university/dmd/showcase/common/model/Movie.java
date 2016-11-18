@@ -29,7 +29,7 @@ public class Movie implements Serializable {
     private String janr;
 
     @Basic
-    @Column(name = "MVE_DESCRIPTION")
+    @Column(name = "MVE_DESCRIPTION", length = 2048)
     private String description;
 
     @OneToOne
