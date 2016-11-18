@@ -35,4 +35,11 @@ public class EventRestController {
     public List getUsers(@PathVariable long id) {
         return eventService.getEventMembers(id, 0, 20);
     }
+
+
+    @GetMapping("/event/filter/")
+    public List getFilteredEvents() {
+        return eventService.findEventsByFilters("e", "name", 1, null);
+    }
+
 }

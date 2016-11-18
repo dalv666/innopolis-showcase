@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 @Configuration
 @Import({PropertySourceConfig.class})
@@ -24,7 +25,9 @@ public class DataSourceConfig {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("org.postgresql.Driver");
+        Properties info = new Properties();
+        info.put("characterEncoding", "utf8");
+        dataSource.setConnectionProperties(info);
         dataSource.setUrl(url);
         dataSource.setUsername(username);
         dataSource.setPassword(password);
