@@ -5,7 +5,9 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.transaction.annotation.Transactional;
 import ru.innopolis.master.ms1.university.dmd.showcase.common.model.Event;
 import ru.innopolis.master.ms1.university.dmd.showcase.common.model.Movie;
+import ru.innopolis.master.ms1.university.dmd.showcase.common.model.dto.EventDTO;
 import ru.innopolis.master.ms1.university.dmd.showcase.service.dao.custom.EventDAOCustom;
+import ru.innopolis.master.ms1.university.dmd.showcase.service.mapper.EventMapper;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -15,7 +17,7 @@ import java.util.List;
 /**
  * Created by dalv on 02.11.2016.
  */
-public class EventDAOImpl implements EventDAOCustom {
+public class EventDAOImpl extends JdbcDaoSupport implements EventDAOCustom {
 
 
     @Autowired
@@ -42,6 +44,17 @@ public class EventDAOImpl implements EventDAOCustom {
         return nativeQuery.getResultList();
     }
 
-
+    public List<EventDTO> findEventsByFilters(String title, String cityName, long price, String date) {
+        String sql = "SELECT e.evt_title, e.evt_type, e.evt_price, e.evt_duration, p.pic_link, l.lct_name, c.cty_name \n" +
+                "FROM event e LEFT JOIN location l ON e.location_lct_id = l.lct_id " +
+                "LEFT JOIN picture p ON e.picture_pic_id = p.pic_id " +
+                "LEFT JOIN city c ON l.city_cty_id = c.cty_id " +
+                "WHERE e.evt_title LIKE '%?%' AND " +
+                "c.cty_name = '?' AND" +
+                "e.evt_price <= ? AND" +
+                "(e.evt_date = '?' OR CURRENT_DATE)";
+        List<EventDTO> query = getJdbcTemplate().query(sql, new Object[]{title, cityName, price, date}, new EventMapper());
+        return query;
+    }
 
 }
