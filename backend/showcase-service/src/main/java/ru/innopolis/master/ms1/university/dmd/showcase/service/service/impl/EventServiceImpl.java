@@ -7,8 +7,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.innopolis.master.ms1.university.dmd.showcase.common.model.Event;
 import ru.innopolis.master.ms1.university.dmd.showcase.common.model.User;
+import ru.innopolis.master.ms1.university.dmd.showcase.common.model.dto.EventDTO;
 import ru.innopolis.master.ms1.university.dmd.showcase.service.dao.EventDAO;
+import ru.innopolis.master.ms1.university.dmd.showcase.service.dao.custom.EventDAOCustom;
 import ru.innopolis.master.ms1.university.dmd.showcase.service.dao.custom.UserDAOCustom;
+import ru.innopolis.master.ms1.university.dmd.showcase.service.dao.custom.impl.EventDAOImpl;
 import ru.innopolis.master.ms1.university.dmd.showcase.service.service.EventService;
 
 import java.util.List;
@@ -19,6 +22,9 @@ public class EventServiceImpl implements EventService {
 
     @Autowired
     private EventDAO eventDAO;
+
+    @Autowired
+    private EventDAOImpl eventDaoImpl;
 
     @Autowired
     private UserDAOCustom userDao;
@@ -79,5 +85,9 @@ public class EventServiceImpl implements EventService {
         userDao.userNoGoEvent(userId, eventId);
     }
 
+    @Override
+    public List<EventDTO> findEventsByFilters(String title, String cityName, long price, String date) {
+        return eventDaoImpl.findEventsByFilters(title, cityName, price, date);
+    }
 
 }

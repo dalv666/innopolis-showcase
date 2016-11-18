@@ -1,6 +1,7 @@
 package ru.innopolis.master.ms1.university.dmd.showcase.service.dao.custom.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.transaction.annotation.Transactional;
 import ru.innopolis.master.ms1.university.dmd.showcase.common.model.Event;
@@ -11,6 +12,7 @@ import ru.innopolis.master.ms1.university.dmd.showcase.service.mapper.EventMappe
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.sql.DataSource;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -22,6 +24,11 @@ public class EventDAOImpl extends JdbcDaoSupport implements EventDAOCustom {
 
     @Autowired
     private EntityManager entityManager;
+
+    @Autowired
+    EventDAOImpl(DataSource dataSource){
+        setDataSource(dataSource);
+    }
 
     @Override
     public List<Movie> findMovieByAwardCountAndDate(double rate, LocalDate date) {
@@ -45,6 +52,7 @@ public class EventDAOImpl extends JdbcDaoSupport implements EventDAOCustom {
     }
 
     public List<EventDTO> findEventsByFilters(String title, String cityName, long price, String date) {
+
         String sql = "SELECT e.evt_title, e.evt_type, e.evt_price, e.evt_duration, p.pic_link, l.lct_name, c.cty_name \n" +
                 "FROM event e LEFT JOIN location l ON e.location_lct_id = l.lct_id " +
                 "LEFT JOIN picture p ON e.picture_pic_id = p.pic_id " +
