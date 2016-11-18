@@ -35,4 +35,28 @@ var User = (function () {
     return User;
 }());
 exports.User = User;
+var Picture = (function () {
+    function Picture() {
+    }
+    return Picture;
+}());
+exports.Picture = Picture;
+var City = (function () {
+    function City() {
+    }
+    return City;
+}());
+exports.City = City;
+var Person = (function () {
+    function Person() {
+    }
+    return Person;
+}());
+exports.Person = Person;
+var Locatione = (function () {
+    function Locatione() {
+    }
+    return Locatione;
+}());
+exports.Locatione = Locatione;
 //# sourceMappingURL=models.js.map

@@ -8,7 +8,7 @@ import ru.innopolis.master.ms1.university.dmd.showcase.common.model.User;
 import java.time.LocalDate;
 import java.util.Set;
 
-public class EventDTO {
+public class EventDTO{
 
     private long id;
 

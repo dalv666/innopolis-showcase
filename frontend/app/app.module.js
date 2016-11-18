@@ -8,34 +8,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var platform_browser_1 = require("@angular/platform-browser");
-var app_component_1 = require("./component/app.component");
-var forms_1 = require("@angular/forms");
-var event_detail_component_1 = require("./component/event-detail.component");
-var login_component_1 = require("./component/login.component");
-var events_component_1 = require("./component/events.component");
-var search_component_1 = require("./component/search.component");
-var menu_component_1 = require("./component/menu.component");
-var showcase_routing_module_1 = require("./showcase-routing.module");
-var http_1 = require("@angular/http");
+var core_1 = require('@angular/core');
+var platform_browser_1 = require('@angular/platform-browser');
+var app_component_1 = require('./component/app.component');
+var forms_1 = require('@angular/forms');
+var event_detail_component_1 = require('./component/event-detail.component');
+var person_detail_component_1 = require('./component/person-detail.component');
+var city_detail_component_1 = require('./component/city-detail.component');
+var location_detail_component_1 = require('./component/location-detail.component');
+var login_component_1 = require('./component/login.component');
+var events_component_1 = require('./component/events.component');
+var search_component_1 = require('./component/search.component');
+var menu_component_1 = require('./component/menu.component');
+var showcase_routing_module_1 = require('./showcase-routing.module');
+var http_1 = require('@angular/http');
 var AppModule = (function () {
     function AppModule() {
     }
+    AppModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                platform_browser_1.BrowserModule,
+                forms_1.FormsModule,
+                showcase_routing_module_1.ShowcaseRoutingModule,
+                http_1.HttpModule
+            ],
+            declarations: [app_component_1.AppComponent, event_detail_component_1.EventDetailComponent, location_detail_component_1.LocationDetailComponent, person_detail_component_1.PersonDetailComponent, city_detail_component_1.CityDetailComponent, events_component_1.EventsComponent, menu_component_1.MenuComponent, login_component_1.LoginComponent, search_component_1.SearchComponent],
+            bootstrap: [app_component_1.AppComponent]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], AppModule);
     return AppModule;
 }());
-AppModule = __decorate([
-    core_1.NgModule({
-        imports: [
-            platform_browser_1.BrowserModule,
-            forms_1.FormsModule,
-            showcase_routing_module_1.ShowcaseRoutingModule,
-            http_1.HttpModule
-        ],
-        declarations: [app_component_1.AppComponent, event_detail_component_1.EventDetailComponent, events_component_1.EventsComponent, menu_component_1.MenuComponent, login_component_1.LoginComponent, search_component_1.SearchComponent],
-        bootstrap: [app_component_1.AppComponent]
-    }),
-    __metadata("design:paramtypes", [])
-], AppModule);
 exports.AppModule = AppModule;
 //# sourceMappingURL=app.module.js.map

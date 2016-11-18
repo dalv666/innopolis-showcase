@@ -1,6 +1,9 @@
 package ru.innopolis.master.ms1.university.dmd.showcase.service.dao.custom.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.transaction.annotation.Transactional;
+import ru.innopolis.master.ms1.university.dmd.showcase.common.model.Event;
 import ru.innopolis.master.ms1.university.dmd.showcase.common.model.Movie;
 import ru.innopolis.master.ms1.university.dmd.showcase.service.dao.custom.EventDAOCustom;
 
@@ -38,4 +41,7 @@ public class EventDAOImpl implements EventDAOCustom {
         nativeQuery.executeUpdate();
         return nativeQuery.getResultList();
     }
+
+
+
 }

@@ -4,9 +4,12 @@ import { RouterModule, Routes} from '@angular/router';
 import { EventsComponent } from './component/events.component';
 import { SearchComponent } from './component/search.component';
 import { EventDetailComponent} from './component/event-detail.component';
+import { CityDetailComponent} from './component/city-detail.component';
+import { LocationDetailComponent} from './component/location-detail.component';
 import { AppComponent } from './component/app.component';
 import { MenuComponent} from './component/menu.component';
 import { LoginComponent} from './component/login.component';
+import { PersonDetailComponent} from './component/person-detail.component';
 
 const routes: Routes = [
   {
@@ -21,7 +24,7 @@ const routes: Routes = [
   {
     path: 'menu',
     component: MenuComponent
-  },  
+  },
   {
       path: 'search',
       component: SearchComponent
@@ -29,6 +32,18 @@ const routes: Routes = [
   {
     path: 'event/:id',
     component: EventDetailComponent
+  },
+  {
+    path: 'city/:id',
+    component: CityDetailComponent
+  },
+  {
+    path: 'location/:id',
+    component: LocationDetailComponent
+  },
+  {
+    path: 'person/:id',
+    component: PersonDetailComponent
   },
   {
     path: 'login',

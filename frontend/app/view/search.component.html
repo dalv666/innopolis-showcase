@@ -1,28 +1,89 @@
 <!--Panel-->
 <div class="card card-block">
-    <h4 class="card-title text-xs-center">Search criteria<small class="text-muted" ><a class="card-link">[all]</a></small></h4>
+    <h4 class="card-title">Search criteria<small class="text-muted" ><a class="card-link">[all]</a></small></h4>
     <hr>
-    <div class="col-md-4 col-xs-4 ">
+    <div class="col-md-12 col-xs-12">
 
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="input-group">
-            <span class="input-group-addon">
-              <input type="checkbox" aria-label="Checkbox for following text input">
-            </span>
-            <input type="text" class="form-control" aria-label="Text input with checkbox">
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="input-group">
-            <span class="input-group-addon">
-              <input type="radio" aria-label="Radio button for following text input">
-            </span>
-            <input type="text" class="form-control" aria-label="Text input with radio button">
-          </div>
-        </div>
-      </div>
+      <form>
+          <!--First row-->
+          <div class="row">
+              <!--First column-->
+              <div class="col-md-6">
+                <!--Right-->
+                <div class="md-form input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                </div>
+              </div>
 
+              <!--Second column-->
+              <div class="col-md-6">
+                  <div class="md-form">
+                      <i class="fa fa-lock prefix"></i>
+                      <input type="password" id="form82" class="form-control validate">
+                      <label for="form82" data-error="wrong" data-success="right">Type your password</label>
+                  </div>
+              </div>
+          </div>
+          <!--/.First row-->
+
+          <!--Second row-->
+          <div class="row">
+              <!--First column-->
+              <div class="col-md-12">
+
+                <label>Category</label>
+                <select class="browser-default">
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                </select>
+
+              </div>
+          </div>
+          <!--/.Second row-->
+
+          <!--Third row-->
+          <div class="row">
+
+              <!--First column-->
+              <div class="col-md-4">
+                <input type="checkbox" id="checkbox1">
+                <label for="checkbox1">Example label</label>
+                  <div class="md-form">
+                      <input type="text" id="form41" class="form-control">
+                      <label for="form41" class="">Example label</label>
+                  </div>
+              </div>
+
+              <!--Second column-->
+              <div class="col-md-4">
+                <input type="checkbox" id="checkbox1">
+                <label for="checkbox1">Example label</label>
+                  <div class="md-form">
+                      <input type="text" id="form51" class="form-control">
+                      <label for="form51" class="">Example label</label>
+                  </div>
+              </div>
+
+              <!--Third column-->
+              <div class="col-md-4">
+                <input type="checkbox" id="checkbox1">
+                <label for="checkbox1">Example label</label>
+                  <div class="md-form">
+                      <input type="text" id="form61" class="form-control">
+                      <label for="form61" class="">Example label</label>
+                  </div>
+              </div>
+
+          </div>
+          <!--/.Third row-->
+
+
+          <div class="row">
+            <button>Search</button>
+          </div>
+      </form>
     </div>
 </div>
 <!--/.Panel-->

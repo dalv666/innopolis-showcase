@@ -13,8 +13,11 @@ var router_1 = require('@angular/router');
 var events_component_1 = require('./component/events.component');
 var search_component_1 = require('./component/search.component');
 var event_detail_component_1 = require('./component/event-detail.component');
+var city_detail_component_1 = require('./component/city-detail.component');
+var location_detail_component_1 = require('./component/location-detail.component');
 var menu_component_1 = require('./component/menu.component');
 var login_component_1 = require('./component/login.component');
+var person_detail_component_1 = require('./component/person-detail.component');
 var routes = [
     {
         path: '',
@@ -36,6 +39,18 @@ var routes = [
     {
         path: 'event/:id',
         component: event_detail_component_1.EventDetailComponent
+    },
+    {
+        path: 'city/:id',
+        component: city_detail_component_1.CityDetailComponent
+    },
+    {
+        path: 'location/:id',
+        component: location_detail_component_1.LocationDetailComponent
+    },
+    {
+        path: 'person/:id',
+        component: person_detail_component_1.PersonDetailComponent
     },
     {
         path: 'login',

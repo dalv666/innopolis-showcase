@@ -3,3 +3,5 @@
 /frontend/app/component/*.map
 /frontend/app/common/*.map
 /frontend/app/component/*.js
+target
+node_modules

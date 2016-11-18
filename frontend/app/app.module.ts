@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }   from './component/app.component';
 import { FormsModule }   from '@angular/forms';
 import { EventDetailComponent} from './component/event-detail.component';
+import { PersonDetailComponent} from './component/person-detail.component';
+import { CityDetailComponent} from './component/city-detail.component';
+import { LocationDetailComponent} from './component/location-detail.component';
 import { LoginComponent} from './component/login.component';
 import { EventsComponent} from './component/events.component';
 import { SearchComponent } from './component/search.component';
@@ -19,7 +22,7 @@ import { HttpModule }    from '@angular/http';
     ShowcaseRoutingModule,
     HttpModule
    ],
-  declarations: [ AppComponent, EventDetailComponent, EventsComponent, MenuComponent, LoginComponent,SearchComponent ],
+  declarations: [ AppComponent, EventDetailComponent,LocationDetailComponent,PersonDetailComponent, CityDetailComponent, EventsComponent, MenuComponent, LoginComponent,SearchComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

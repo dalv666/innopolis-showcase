@@ -55,3 +55,31 @@ export class User {
     email: string;
     avatar: Avatar;
 }
+
+export class Picture {
+    id: number;
+    picture: string;
+}
+
+export class City {
+    name: string;
+    id: number;
+    picture: Picture;
+}
+
+export class Person {
+    id: number;
+    firstName: string;
+    lastName: string;
+    photo: Picture;
+    description: string;
+}
+
+export class Locatione {
+    id: number;
+    name: string;
+    longitude: number;
+    latitude: number;
+    description: string;
+    city: City;
+}
