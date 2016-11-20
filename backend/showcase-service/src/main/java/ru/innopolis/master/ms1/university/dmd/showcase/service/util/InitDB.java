@@ -91,6 +91,7 @@ public class InitDB {
             new Picture(47,"http://kobalt-tur.ru/images/yaroslavlzh.jpg"),
             new Picture(48,"http://mcselect.ru/wp-content/uploads/2015/07/excursion-spain.jpg"),
             new Picture(49,"https://university.innopolis.ru/upload/resize_cache/iblock/8a8/1920_869_275511db9cefbc414a902a46f1b8fae16/150807-DSC_9145-Platonov.jpg"),    };
+   };
 
     public static final City[] CITIES = {
             new City(51, PICTURES[11], "Innopolis"),
@@ -239,6 +240,7 @@ public class InitDB {
     };
 
     public static final Group[] GROUPS = {
+<<<<<<< HEAD
             new Group(0, "PartyMakers#0", LocalDate.now(), "Free", PICTURES[15]),
             new Group(1, "PartyMakers#1", LocalDate.now(), "Free", PICTURES[15]),
             new Group(2, "PartyMakers#2", LocalDate.now(), "Free", PICTURES[15]),
