@@ -13,8 +13,12 @@ import { contentHeaders } from './../common/headers';
 })
 
 export class LoginComponent {
-
+  valid = true;
     constructor(public router: Router, public http: Http) {
+    }
+
+    showError(){
+      this.valid = false;
     }
 
     login(event, username, password) {
@@ -23,8 +27,13 @@ export class LoginComponent {
         this.http.post('http://localhost:8080/rest/sessions/create', body, { headers: contentHeaders })
             .subscribe(
             response => {
-                localStorage.setItem('id_token', response.json().id_token);
-                this.router.navigate(['events']);
+                if(response.text()==="true"){
+                  localStorage.setItem('id_token', '1');
+                  this.router.navigate(['events']);
+                }else{
+                  this.showError();
+                }
+
             },
             error => {
                 alert(error.text());

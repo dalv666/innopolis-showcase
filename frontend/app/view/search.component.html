@@ -1,31 +1,10 @@
 <!--Panel-->
 <div class="card card-block">
-    <h4 class="card-title">Search criteria<small class="text-muted" ><a class="card-link">[all]</a></small></h4>
+    <h4 class="card-title">Search criteria</h4>
     <hr>
     <div class="col-md-12 col-xs-12">
 
-      <form>
-          <!--First row-->
-          <div class="row">
-              <!--First column-->
-              <div class="col-md-6">
-                <!--Right-->
-                <div class="md-form input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                </div>
-              </div>
-
-              <!--Second column-->
-              <div class="col-md-6">
-                  <div class="md-form">
-                      <i class="fa fa-lock prefix"></i>
-                      <input type="password" id="form82" class="form-control validate">
-                      <label for="form82" data-error="wrong" data-success="right">Type your password</label>
-                  </div>
-              </div>
-          </div>
-          <!--/.First row-->
-
+      <div>
           <!--Second row-->
           <div class="row">
               <!--First column-->
@@ -33,10 +12,10 @@
 
                 <label>Category</label>
                 <select class="browser-default">
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
+                    <option value="" disabled selected>Choose category</option>
+                    <option value="1">All</option>
+                    <option value="2">Movie event</option>
+                    <option value="3">Music event</option>
                 </select>
 
               </div>
@@ -48,31 +27,31 @@
 
               <!--First column-->
               <div class="col-md-4">
-                <input type="checkbox" id="checkbox1">
-                <label for="checkbox1">Example label</label>
-                  <div class="md-form">
-                      <input type="text" id="form41" class="form-control">
-                      <label for="form41" class="">Example label</label>
+                <input type="checkbox" id="checkbox1" (click)="changeFirst()">
+                <label>Title</label>
+                  <div class="md-form" >
+                      <input type="text" id="form41" class="form-control" [disabled]="first">
+                      <label for="form41" class="">Title</label>
                   </div>
               </div>
 
               <!--Second column-->
               <div class="col-md-4">
-                <input type="checkbox" id="checkbox1">
-                <label for="checkbox1">Example label</label>
+                <input type="checkbox" id="checkbox1" (click)="changeSecond()">
+                <label>City</label>
                   <div class="md-form">
-                      <input type="text" id="form51" class="form-control">
-                      <label for="form51" class="">Example label</label>
+                      <input type="text" id="form51" class="form-control" [disabled]="second">
+                      <label for="form51" class="">City</label>
                   </div>
               </div>
 
               <!--Third column-->
               <div class="col-md-4">
-                <input type="checkbox" id="checkbox1">
-                <label for="checkbox1">Example label</label>
+                <input type="checkbox" id="checkbox1" (click)="changeThird()">
+                <label>Price</label>
                   <div class="md-form">
-                      <input type="text" id="form61" class="form-control">
-                      <label for="form61" class="">Example label</label>
+                      <input type="text" id="form61" class="form-control" [disabled]="third">
+                      <label for="form61">Price</label>
                   </div>
               </div>
 
@@ -81,9 +60,9 @@
 
 
           <div class="row">
-            <button>Search</button>
+            <button type="button" class="btn btn-primary">Search</button>
           </div>
-      </form>
+      </div>
     </div>
 </div>
 <!--/.Panel-->

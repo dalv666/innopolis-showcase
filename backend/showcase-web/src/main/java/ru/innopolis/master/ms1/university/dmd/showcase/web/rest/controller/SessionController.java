@@ -9,9 +9,13 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 public class SessionController {
 
+
     @PostMapping("/sessions/create")
-    public String session(@RequestBody String body) {
-        System.out.println(body);
-        return "{ \"id_token\" : 228}";
+    public boolean session(@RequestBody Usr body) {
+        if (body.username.equals("user") && body.password.equals("user")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

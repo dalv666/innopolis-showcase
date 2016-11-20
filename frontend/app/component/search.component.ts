@@ -4,6 +4,7 @@ import {Event} from './../model/event';
 import {EventService} from './../service/event.service';
 import { OnInit,OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import {SearchRequest} from './../model/models';
 
 @Component({
     selector: 'events',
@@ -26,9 +27,17 @@ import { Router } from '@angular/router';
 export class SearchComponent implements OnInit{
     errorMessage:string;
     events: Event[];
+    public first:boolean;
+    public second:boolean;
+    public third:boolean;
+
+    searchRequest:SearchRequest;
 
     ngOnInit(): void {
       this.getEvents();
+      this.first = true;
+      this.second = true;
+      this.third = true;
     }
 
 
@@ -57,4 +66,7 @@ export class SearchComponent implements OnInit{
       this.router.navigate(link);
     }
 
+    changeFirst(){this.first=!this.first;}
+    changeSecond(){this.second=!this.second;}
+    changeThird(){this.third=!this.third;}
 }

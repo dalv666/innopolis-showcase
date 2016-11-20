@@ -1,0 +1,183 @@
+<div class="col-md-6">
+
+  <!--Panel-->
+  <div class="card card-block text-xs-center table-responsive">
+      <h4 class="card-title">Event stat</h4>
+      <hr>
+      <table class="table table-bordered table-sm">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>evt_title</th>
+            <th>evt_type</th>
+            <th>evt_price</th>
+            <th>lct_name</th>
+            <th>visits</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let eventsStat of eventsStats; let i=index" >
+          <th scope="row">{{i+1}}</th>
+          <td>{{eventsStat.evt_title}}</td>
+          <td>{{eventsStat.evt_type}}</td>
+          <td>{{eventsStat.evt_price}}</td>
+          <td>{{eventsStat.lct_name}}</td>
+          <td>{{eventsStat.visits}}</td>
+        </tr>
+        </tbody>
+      </table>
+  </div>
+  <!--/.Panel-->
+</div>
+
+
+
+<div class="col-md-6">
+  <!--Panel-->
+  <div class="card card-block text-xs-center table-responsive">
+        <h4 class="card-title">Event stat</h4>
+        <hr>
+    <table class="table table-bordered table-sm">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>evt_id</th>
+          <th>evt_title</th>
+          <th>lct_name</th>
+          <th>evt_price</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let event of eventCityMaxStat; let i=index" >
+        <th scope="row">{{i+1}}</th>
+        <td>{{event.evt_id}}</td>
+        <td>{{event.evt_title}}</td>
+        <td>{{event.lct_name}}</td>
+        <td>{{event.evt_price}}</td>
+      </tr>
+      </tbody>
+    </table>
+</div>
+<!--/.Panel-->
+</div>
+
+
+<div class="col-md-6">
+  <!--Panel-->
+  <div class="card card-block text-xs-center table-responsive">
+        <h4 class="card-title">Event stat</h4>
+        <hr>
+    <table class="table table-bordered table-sm">
+      <thead>
+        <tr>
+          <th>#</th>
+      <!--    <th>evt_id</th>-->
+          <th>evt_title<th>
+          <th>evt_type</th>
+          <th>evt_price</th>
+          <th>cty_name</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let event of eventCatMaxStat; let i=index" >
+        <th scope="row">{{i+1}}</th>
+    <!-- <td>{{event.evt_id}}</td> -->
+        <td>{{event.evt_title}}</td>
+        <td>{{event.evt_type}}</td>
+        <td>{{event.evt_price}}</td>
+        <td>{{event.cty_name}}</td>
+      </tr>
+      </tbody>
+    </table>
+</div>
+<!--/.Panel-->
+</div>
+
+
+<div class="col-md-6">
+  <!--Panel-->
+  <div class="card card-block text-xs-center table-responsive">
+        <h4 class="card-title">Event stat</h4>
+        <hr>
+    <table class="table table-bordered table-sm">
+      <thead>
+        <tr>
+          <th>#</th>
+      <!--    <th>usr_id</th> -->
+          <th>usr_name<th>
+          <th>usr_scn_name</th>
+          <th>usr_fst_name</th>
+        <!--  <th>usr_email</th>-->
+          <th>visits</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of usersActivity; let i=index" >
+        <th scope="row">{{i+1}}</th>
+    <!--    <td>{{user.usr_id}}</td>-->
+        <td>{{user.usr_name}}</td>
+        <td>{{user.usr_scn_name}}</td>
+        <td>{{user.usr_fst_name}}</td>
+      <!--  <td>{{user.usr_email}}</td>-->
+        <td>{{user.visits}}</td>
+      </tr>
+      </tbody>
+    </table>
+</div>
+<!--/.Panel-->
+</div>
+
+
+
+
+<div class="col-md-12">
+  <div class="col-md-4" *ngFor="let event of events; let i=index" >
+    <!--Card-->
+    <div class="card">
+
+      <!--Zoom effect-->
+      <div class="view hm-zoom event-tile overlay hm-blue-light" (click)="gotoDetail(event)" >
+          <img class="img-fluid" src="{{event.picture.picture}}" alt="Card image cap">
+          <div class="mask flex-center">
+
+          </div>
+      </div>
+        <!--Card image-->
+
+        <!--/.Card image-->
+        <!--Card content-->
+        <div class="card-block">
+          <div class="row">
+            <div class="col-md-10">
+            <!--Title-->
+              <h4 class="card-title">{{event.title}}</h4>
+            </div>
+            <div class="col-md-2" [ngSwitch]="event.type">
+              <i *ngSwitchCase="'SPECTACLE'" class="fa fa-camera-retro fa-2x"></i>
+              <i *ngSwitchCase="'MOVIE'" class="fa fa-child fa-2x"></i>
+            </div>
+          </div>
+            <!--Text-->
+            <p class="card-text">{{event.description}}</p>
+
+            <div class="col-md-8">
+              <i class="fa fa-group fa-lg"></i> {{event.capacity}}
+            </div>
+
+            <div class="col-md-4">
+              <i class="fa fa-dollar fa-lg"></i> {{event.price}}
+            </div>
+
+            <div class="col-md-8" style="margin-top:12px;">
+              <i class="fa fa-calendar-check-o fa-lg"></i> <span class="img-rounded" style="background-color:#eee;padding: 3px;border-radius:4px;">{{event.date.dayOfMonth}}/{{event.date.monthValue}}/{{event.date.year}}</span>
+            </div>
+
+            <div class="col-md-4">
+              <a (click)="gotoDetail(event)" class="btn btn-primary float-right">View</a>
+            </div>
+
+        </div>
+        <!--/.Card content-->
+    </div>
+    <!--/.Card-->
+  </div>

@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var events_component_1 = require('./component/events.component');
+var index_component_1 = require('./component/index.component');
 var search_component_1 = require('./component/search.component');
 var event_detail_component_1 = require('./component/event-detail.component');
 var city_detail_component_1 = require('./component/city-detail.component');
@@ -21,8 +22,12 @@ var person_detail_component_1 = require('./component/person-detail.component');
 var routes = [
     {
         path: '',
-        redirectTo: '/events',
+        redirectTo: '/index',
         pathMatch: 'full'
+    },
+    {
+        path: 'index',
+        component: index_component_1.IndexComponent
     },
     {
         path: 'events',

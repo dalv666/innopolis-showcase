@@ -2,6 +2,7 @@ import { NgModule }      from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 
 import { EventsComponent } from './component/events.component';
+import { IndexComponent } from './component/index.component';
 import { SearchComponent } from './component/search.component';
 import { EventDetailComponent} from './component/event-detail.component';
 import { CityDetailComponent} from './component/city-detail.component';
@@ -14,8 +15,12 @@ import { PersonDetailComponent} from './component/person-detail.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/events',
+    redirectTo: '/index',
     pathMatch: 'full'
+  },
+  {
+    path: 'index',
+    component: IndexComponent
   },
   {
     path: 'events',

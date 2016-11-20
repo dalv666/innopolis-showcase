@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 
 import {Event} from './../model/event';
-import {User} from './../model/models';
+import {User, EventStat, EventCityMaxStat,EventCatMaxStat,UsersActivityDTO} from './../model/models';
 import { Headers, Http,Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/Rx';
@@ -54,4 +54,38 @@ export class EventService{
                     .map(this.extractData)
                     .catch(this.handleError);
   }
+
+
+  private eventAttendStat = 'http://localhost:8080/rest/event/attend/stat';  // URL to web api
+
+  getEventStatAttendStat():Observable<EventStat[]>{
+    return this.http.get(this.eventAttendStat)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  private eventMaxPriceURL = 'http://localhost:8080/rest/event/max/city';
+
+  getEventMaxPriceCityDTO():Observable<EventCityMaxStat[]>{
+    return this.http.get(this.eventMaxPriceURL)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+private eventCatMaxStatURL = 'http://localhost:8080/rest/event/max/cat';
+
+  getEventCatMaxStat():Observable<EventCatMaxStat[]>{
+    return this.http.get(this.eventCatMaxStatURL)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+private usersActivityDTOURL = 'http://localhost:8080/rest/user/actives';
+  getUsersActivityDTO():Observable<UsersActivityDTO[]>{
+    return this.http.get(this.usersActivityDTOURL)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+
 }

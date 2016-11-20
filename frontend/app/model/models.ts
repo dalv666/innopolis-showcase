@@ -83,3 +83,48 @@ export class Locatione {
     description: string;
     city: City;
 }
+
+export class EventStat {
+    evt_id: number;
+    evt_title: string;
+    evt_type: string;
+    evt_price: number;
+    lct_name: string;
+    visits: number;
+}
+
+export class EventCityMaxStat {
+    evt_id: number;
+    evt_title: string;
+    evt_price: number;
+    lct_name: string;
+}
+
+
+export class EventCatMaxStat {
+    evt_id: number;
+    evt_title: string;
+    evt_type: string;
+    evt_price: number;
+    cty_name: string;
+}
+
+export class UsersActivityDTO {
+    usr_id: number;
+    usr_name: string;
+    usr_scn_name: string;
+    usr_fst_name: string;
+    usr_email: string;
+    visits: number;
+}
+
+
+export class SearchRequest{
+    title: string;
+    first: boolean;
+    cityName: string;
+    second: boolean;
+    price: number;
+    third: boolean;
+    category: string;
+}

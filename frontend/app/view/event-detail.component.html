@@ -66,13 +66,15 @@
       <div class="card card-block">
         <h4 class="card-title">Director</h4>
         <hr>
-        <!--Zoom effect-->
-        <div class="view overlay hm-zoom hm-black-light">
-            <img src="{{event.director.photo.picture}}" class="img-fluid rounded" alt="">
-            <div class="mask flex-center waves-effect waves-light">
-                <p class="white-text">{{event.director.firstName}} {{event.director.lastName}}</p>
-            </div>
-        </div>
+        <a href="/person/{{event.director.id}}">
+          <!--Zoom effect-->
+          <div class="view overlay hm-zoom hm-black-light">
+              <img src="{{event.director.photo.picture}}" class="img-fluid rounded" alt="">
+              <div class="mask flex-center waves-effect waves-light">
+                  <p class="white-text">{{event.director.firstName}} {{event.director.lastName}}</p>
+              </div>
+          </div>
+      </a>
       </div>
       <!--/.Panel-->
     </div>
@@ -82,6 +84,7 @@
       <div class="card card-block">
         <h4 class="card-title">Author</h4>
         <hr>
+        <a href="/person/{{event.director.id}}">
         <!--Zoom effect-->
         <div class="view overlay hm-zoom hm-black-light">
             <img src="{{event.director.photo.picture}}" class="img-fluid rounded" alt="">
@@ -89,6 +92,7 @@
                 <p class="white-text">{{event.director.firstName}} {{event.director.lastName}}</p>
             </div>
         </div>
+      </a>
       </div>
       <!--/.Panel-->
     </div>
@@ -98,6 +102,7 @@
       <div class="card card-block">
         <h4 class="card-title">Location</h4>
         <hr>
+        <a href="/location/{{event.location.id}}">
         <!--Zoom effect-->
         <div class="view overlay hm-zoom hm-black-light" >
             <img src="{{event.location.city.picture.picture}}" class="img-fluid rounded" alt="">
@@ -105,7 +110,7 @@
                 <p class="white-text">{{event.location.city.name}}</p>
             </div>
         </div>
-
+        </a>
       </div>
       <!--/.Panel-->
     </div>

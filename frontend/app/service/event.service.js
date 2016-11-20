@@ -17,6 +17,10 @@ var EventService = (function () {
         this.http = http;
         this.heroesUrl = 'http://localhost:8080/rest/events'; // URL to web api
         this.heroeUrl = 'http://localhost:8080/rest/event/'; // URL to web api
+        this.eventAttendStat = 'http://localhost:8080/rest/event/attend/stat'; // URL to web api
+        this.eventMaxPriceURL = 'http://localhost:8080/rest/event/max/city';
+        this.eventCatMaxStatURL = 'http://localhost:8080/rest/event/max/cat';
+        this.usersActivityDTOURL = 'http://localhost:8080/rest/user/actives';
     }
     EventService.prototype.getEvents = function () {
         return this.http.get(this.heroesUrl)
@@ -49,6 +53,26 @@ var EventService = (function () {
     };
     EventService.prototype.getEventUsers = function (id) {
         return this.http.get(this.heroeUrl + "" + id + "/users/")
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    EventService.prototype.getEventStatAttendStat = function () {
+        return this.http.get(this.eventAttendStat)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    EventService.prototype.getEventMaxPriceCityDTO = function () {
+        return this.http.get(this.eventMaxPriceURL)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    EventService.prototype.getEventCatMaxStat = function () {
+        return this.http.get(this.eventCatMaxStatURL)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    EventService.prototype.getUsersActivityDTO = function () {
+        return this.http.get(this.usersActivityDTOURL)
             .map(this.extractData)
             .catch(this.handleError);
     };

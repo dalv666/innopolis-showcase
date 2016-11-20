@@ -59,4 +59,34 @@ var Locatione = (function () {
     return Locatione;
 }());
 exports.Locatione = Locatione;
+var EventStat = (function () {
+    function EventStat() {
+    }
+    return EventStat;
+}());
+exports.EventStat = EventStat;
+var EventCityMaxStat = (function () {
+    function EventCityMaxStat() {
+    }
+    return EventCityMaxStat;
+}());
+exports.EventCityMaxStat = EventCityMaxStat;
+var EventCatMaxStat = (function () {
+    function EventCatMaxStat() {
+    }
+    return EventCatMaxStat;
+}());
+exports.EventCatMaxStat = EventCatMaxStat;
+var UsersActivityDTO = (function () {
+    function UsersActivityDTO() {
+    }
+    return UsersActivityDTO;
+}());
+exports.UsersActivityDTO = UsersActivityDTO;
+var SearchRequest = (function () {
+    function SearchRequest() {
+    }
+    return SearchRequest;
+}());
+exports.SearchRequest = SearchRequest;
 //# sourceMappingURL=models.js.map
