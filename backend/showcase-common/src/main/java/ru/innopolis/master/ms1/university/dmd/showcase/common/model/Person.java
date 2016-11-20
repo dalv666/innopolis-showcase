@@ -54,9 +54,10 @@ public class Person implements Serializable {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.description = description;
+        this.deaathDate = deaathDate;
         this.birthdayDate = birthdayDate;
         this.photo = photo;
+        this.description = description;
     }
 
     public Person() {
