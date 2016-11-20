@@ -9,7 +9,6 @@ import ru.innopolis.master.ms1.university.dmd.showcase.common.model.Event;
 import ru.innopolis.master.ms1.university.dmd.showcase.common.model.User;
 import ru.innopolis.master.ms1.university.dmd.showcase.common.model.dto.*;
 import ru.innopolis.master.ms1.university.dmd.showcase.service.dao.EventDAO;
-import ru.innopolis.master.ms1.university.dmd.showcase.service.dao.custom.EventDAOCustom;
 import ru.innopolis.master.ms1.university.dmd.showcase.service.dao.custom.UserDAOCustom;
 import ru.innopolis.master.ms1.university.dmd.showcase.service.dao.custom.impl.EventDAOImpl;
 import ru.innopolis.master.ms1.university.dmd.showcase.service.service.EventService;
