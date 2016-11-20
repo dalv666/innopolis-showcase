@@ -50,14 +50,13 @@ public class Person implements Serializable {
     @ManyToMany(fetch = FetchType.LAZY)
     private Set<User> rating;
 
-    public Person(long id, String firstName, String lastName, LocalDate deaathDate, LocalDate birthdayDate, Picture photo, String description) {
+    public Person(long id, String firstName, String lastName, String description, LocalDate deaathDate, LocalDate birthdayDate, Picture photo) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.deaathDate = deaathDate;
+        this.description = description;
         this.birthdayDate = birthdayDate;
         this.photo = photo;
-        this.description = description;
     }
 
     public Person() {
