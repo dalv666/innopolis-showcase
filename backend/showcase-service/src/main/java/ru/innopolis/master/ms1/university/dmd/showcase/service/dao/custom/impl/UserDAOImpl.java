@@ -1,10 +1,16 @@
 package ru.innopolis.master.ms1.university.dmd.showcase.service.dao.custom.impl;
 
+
+import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import ru.innopolis.master.ms1.university.dmd.showcase.common.model.dto.LectureFinderDTO;
+import ru.innopolis.master.ms1.university.dmd.showcase.common.model.dto.UsersActivityDTO;
 import ru.innopolis.master.ms1.university.dmd.showcase.service.dao.custom.UserDAOCustom;
+import ru.innopolis.master.ms1.university.dmd.showcase.service.mapper.LectureFinderMapper;
+import ru.innopolis.master.ms1.university.dmd.showcase.service.mapper.UsersActivityMapper;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -46,5 +52,6 @@ public class UserDAOImpl implements UserDAOCustom {
             return false;
         }
         return true;
+
     }
 }

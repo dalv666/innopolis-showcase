@@ -6,9 +6,9 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.transaction.annotation.Transactional;
 import ru.innopolis.master.ms1.university.dmd.showcase.common.model.Event;
 import ru.innopolis.master.ms1.university.dmd.showcase.common.model.Movie;
-import ru.innopolis.master.ms1.university.dmd.showcase.common.model.dto.EventDTO;
+import ru.innopolis.master.ms1.university.dmd.showcase.common.model.dto.*;
 import ru.innopolis.master.ms1.university.dmd.showcase.service.dao.custom.EventDAOCustom;
-import ru.innopolis.master.ms1.university.dmd.showcase.service.mapper.EventMapper;
+import ru.innopolis.master.ms1.university.dmd.showcase.service.mapper.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -53,7 +53,7 @@ public class EventDAOImpl extends JdbcDaoSupport implements EventDAOCustom {
 
     public List<EventDTO> findEventsByFilters(String title, String cityName, long price, String date) {
 
-        String sql = "SELECT e.evt_title, e.evt_type, e.evt_price, e.evt_duration, p.pic_link, l.lct_name, c.cty_name " +
+        String sql = "SELECT e.evt_id, e.evt_title, e.evt_type, e.evt_price, e.evt_duration, p.pic_link, l.lct_name, c.cty_name " +
                 "FROM event e LEFT JOIN location l ON e.location_lct_id = l.lct_id " +
                 "LEFT JOIN picture p ON e.picture_pic_id = p.pic_id " +
                 "LEFT JOIN city c ON l.city_cty_id = c.cty_id " +
@@ -61,6 +61,107 @@ public class EventDAOImpl extends JdbcDaoSupport implements EventDAOCustom {
                 "c.cty_name = ? AND " +
                 "e.evt_price <= ?";
         List<EventDTO> query = getJdbcTemplate().query(sql, new Object[]{title, cityName, price}, new EventMapper());
+        return query;
+    }
+
+    public List<EventVisitsDTO> findEventVisits()
+    {
+        String sql =
+            "SELECT e.evt_id, e.evt_title, e.evt_type, e.evt_price, l.lct_name," +
+            "(SELECT COUNT(*) FROM usr_event ue WHERE ue.events_evt_id = e.evt_id)" +
+            "FROM event e LEFT JOIN location l ON e.location_lct_id = l.lct_id";
+        List<EventVisitsDTO> query = getJdbcTemplate().query(sql, new EventVisitsMapper());
+        return query;
+    }
+
+    public List<EventMaxPriceDTO> findEventsByMaxPrice()
+    {
+        String sql =
+            "SELECT DISTINCT e1.evt_id, e1.evt_title, e1.evt_price, c.cty_name " +
+            "FROM event e1 LEFT JOIN location l1 ON e1.location_lct_id = l1.lct_id " +
+            "LEFT JOIN city c ON l1.city_cty_id = c.cty_id " +
+            "RIGHT JOIN (" +
+            "    SELECT l2.city_cty_id, MAX(e2.evt_price) as max_price " +
+            "FROM event e2 JOIN location l2 ON e2.location_lct_id = l2.lct_id " +
+            "GROUP BY l2.city_cty_id) price ON l1.city_cty_id = price.city_cty_id AND e1.evt_price = price.max_price " +
+            "ORDER BY e1.evt_price DESC";
+
+        List<EventMaxPriceDTO> query = getJdbcTemplate().query(sql, new EventMaxPriceMapper());
+        return query;
+    }
+
+    public List<EventMaxPriceDTO> findEventsByMinPrice()
+    {
+        String sql =
+                "SELECT DISTINCT e1.evt_id, e1.evt_title, e1.evt_price, c.cty_name " +
+                        "FROM event e1 LEFT JOIN location l1 ON e1.location_lct_id = l1.lct_id " +
+                        "LEFT JOIN city c ON l1.city_cty_id = c.cty_id " +
+                        "RIGHT JOIN (" +
+                        "    SELECT l2.city_cty_id, MIN(e2.evt_price) as max_price " +
+                        "FROM event e2 JOIN location l2 ON e2.location_lct_id = l2.lct_id " +
+                        "GROUP BY l2.city_cty_id) price ON l1.city_cty_id = price.city_cty_id AND e1.evt_price = price.max_price " +
+                        "ORDER BY e1.evt_price";
+
+        List<EventMaxPriceDTO> query = getJdbcTemplate().query(sql, new EventMaxPriceMapper());
+        return query;
+    }
+
+    public List<EventMaxPriceCatDTO> findEventsByMaxPriceGroupByCategory()
+    {
+        String sql =
+                "SELECT DISTINCT e1.evt_id, e1.evt_title, e1.evt_type, e1.evt_price, c.cty_name " +
+                "FROM event e1 LEFT JOIN location l1 ON e1.location_lct_id = l1.lct_id " +
+                "LEFT JOIN city c ON l1.city_cty_id = c.cty_id " +
+                "RIGHT JOIN (" +
+                "SELECT l2.city_cty_id, e2.evt_type, MAX(e2.evt_price) as max_price " +
+                "FROM event e2 JOIN location l2 ON e2.location_lct_id = l2.lct_id " +
+                "GROUP BY e2.evt_type, l2.city_cty_id) price ON l1.city_cty_id = price.city_cty_id AND e1.evt_price = price.max_price " +
+                "ORDER BY c.cty_name, e1.evt_price DESC";
+        List<EventMaxPriceCatDTO> query = getJdbcTemplate().query(sql, new EventMaxPriceCatMapper());
+        return query;
+    }
+
+    public List<EventMaxPriceCatDTO> findEventsByMinPriceGroupByCategory()
+    {
+        String sql =
+                "SELECT DISTINCT e1.evt_id, e1.evt_title, e1.evt_type, e1.evt_price, c.cty_name " +
+                        "FROM event e1 LEFT JOIN location l1 ON e1.location_lct_id = l1.lct_id " +
+                        "LEFT JOIN city c ON l1.city_cty_id = c.cty_id " +
+                        "RIGHT JOIN (" +
+                        "SELECT l2.city_cty_id, e2.evt_type, MIN(e2.evt_price) as max_price " +
+                        "FROM event e2 JOIN location l2 ON e2.location_lct_id = l2.lct_id " +
+                        "GROUP BY e2.evt_type, l2.city_cty_id) price ON l1.city_cty_id = price.city_cty_id AND e1.evt_price = price.max_price " +
+                        "ORDER BY c.cty_name, e1.evt_price";
+        List<EventMaxPriceCatDTO> query = getJdbcTemplate().query(sql, new EventMaxPriceCatMapper());
+        return query;
+    }
+
+    public List<LectureFinderDTO> findLeсturesByLecturerName(String lecturerName)
+    {
+        String sql =
+                "SELECT e.evt_id, e.evt_title, e.evt_type FROM event e LEFT JOIN lct_event le ON e.evt_id = le.evt_id " +
+                "WHERE e.evt_type = 'LECTURE' AND le.group_grp_id IN " +
+                "(SELECT pg.groups_grp_id as grp_id " +
+                "FROM person p " +
+                "LEFT JOIN person_grp pg ON p.prs_id = pg.person_prs_id " +
+                "WHERE p.prs_first_name || ' ' || p.prs_last_name LIKE %?% " +
+                "AND pg.groups_grp_id IN (SELECT group_grp_id FROM lct_event))";
+        List<LectureFinderDTO> query = getJdbcTemplate().query(sql, new Object[]{lecturerName}, new LectureFinderMapper());
+        return query;
+    }
+
+    public List<UsersActivityDTO> findTopActivityUsers(long topCount)
+    {
+        String sql =
+                "SELECT u.usr_id, u.usr_scn_name, u.usr_fst_name, u.usr_email, a.visits " +
+                        "FROM usr u LEFT JOIN " +
+                        "    (SELECT ue.users_usr_id, COUNT(*) as visits " +
+                        "FROM usr_event ue LEFT JOIN usr u ON ue.users_usr_id = u.usr_id " +
+                        "GROUP BY users_usr_id) " +
+                        "a ON u.usr_id = a.users_usr_id " +
+                        "ORDER BY a.visits, u.usr_scn_name, u.usr_fst_name " +
+                        "LIMIT ?";
+        List<UsersActivityDTO> query = getJdbcTemplate().query(sql, new Object[]{topCount}, new UsersActivityMapper());
         return query;
     }
 
