@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 
 import {Event} from './../model/event';
-import {User, EventStat, EventCityMaxStat,EventCatMaxStat,UsersActivityDTO} from './../model/models';
+import {User, EventStat, EventCityMaxStat,EventCatMaxStat,UsersActivityDTO,EventDTO} from './../model/models';
 import { Headers, Http,Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/Rx';
@@ -87,5 +87,12 @@ private usersActivityDTOURL = 'http://localhost:8080/rest/user/actives';
                     .catch(this.handleError);
   }
 
+  private search = 'http://localhost:8080/rest/event/search';
+
+  getSearch(title:string,city:string,price:number):Observable<EventDTO[]>{
+    return this.http.get(this.search+ "/" + title + "/" + city+ "/" + price)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
 
 }

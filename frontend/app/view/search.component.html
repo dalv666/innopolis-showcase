@@ -12,10 +12,7 @@
 
                 <label>Category</label>
                 <select class="browser-default">
-                    <option value="" disabled selected>Choose category</option>
-                    <option value="1">All</option>
-                    <option value="2">Movie event</option>
-                    <option value="3">Music event</option>
+                    <option value="" disabled selected>All</option>
                 </select>
 
               </div>
@@ -30,7 +27,7 @@
                 <input type="checkbox" id="checkbox1" (click)="changeFirst()">
                 <label>Title</label>
                   <div class="md-form" >
-                      <input type="text" id="form41" class="form-control" [disabled]="first">
+                      <input type="text" id="form41" [(ngModel)]="title" class="form-control" [disabled]="first">
                       <label for="form41" class="">Title</label>
                   </div>
               </div>
@@ -40,7 +37,7 @@
                 <input type="checkbox" id="checkbox1" (click)="changeSecond()">
                 <label>City</label>
                   <div class="md-form">
-                      <input type="text" id="form51" class="form-control" [disabled]="second">
+                      <input type="text" id="form51" [(ngModel)]="city" class="form-control" [disabled]="second">
                       <label for="form51" class="">City</label>
                   </div>
               </div>
@@ -50,7 +47,7 @@
                 <input type="checkbox" id="checkbox1" (click)="changeThird()">
                 <label>Price</label>
                   <div class="md-form">
-                      <input type="text" id="form61" class="form-control" [disabled]="third">
+                      <input type="text" id="form61" [(ngModel)]="price" class="form-control" [disabled]="third">
                       <label for="form61">Price</label>
                   </div>
               </div>
@@ -60,9 +57,59 @@
 
 
           <div class="row">
-            <button type="button" class="btn btn-primary">Search</button>
+            <button type="button" class="btn btn-primary" (click)="search()">Search</button>
           </div>
       </div>
     </div>
 </div>
 <!--/.Panel-->
+
+<div class="col-md-4" *ngFor="let event of events" style="height: 476.656px;">
+  <!--Card-->
+  <div class="card">
+
+    <!--Zoom effect-->
+    <div class="view hm-zoom event-tile overlay hm-blue-light" (click)="gotoDetail(event)" >
+        <img class="img-fluid" src="{{event.pic_link}}" alt="Card image cap">
+        <div class="mask flex-center">
+
+        </div>
+    </div>
+      <!--Card image-->
+
+      <!--/.Card image-->
+      <!--Card content-->
+      <div class="card-block">
+        <div class="row">
+          <div class="col-md-10">
+          <!--Title-->
+            <h4 class="card-title">{{event.title}}</h4>
+          </div>
+          <div class="col-md-2" [ngSwitch]="event.type">
+            <i *ngSwitchCase="'SPECTACLE'" class="fa fa-child fa-2x"></i>
+            <i *ngSwitchCase="'MOVIE'" class="fa fa-camera-retro fa-2x"></i>
+          </div>
+        </div>
+          <!--Text-->
+          <p class="card-text">{{event.description}}</p>
+
+          <div class="col-md-8">
+            <i class="fa fa-group fa-lg"></i> {{event.capacity}}
+          </div>
+
+          <div class="col-md-4">
+            <i class="fa fa-dollar fa-lg"></i> {{event.price}}
+          </div>
+
+          <div class="col-md-8" style="margin-top:12px;">
+          </div>
+
+          <div class="col-md-4">
+            <a (click)="gotoDetail(event)" class="btn btn-primary float-right">View</a>
+          </div>
+
+      </div>
+      <!--/.Card content-->
+  </div>
+  <!--/.Card-->
+</div>

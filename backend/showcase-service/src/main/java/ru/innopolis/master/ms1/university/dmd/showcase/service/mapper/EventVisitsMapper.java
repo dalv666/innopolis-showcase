@@ -22,6 +22,9 @@ public class EventVisitsMapper implements RowMapper<EventVisitsDTO> {
         double evt_price = resultSet.getDouble(4);
         String lct_name = resultSet.getString(5);
         long visits = resultSet.getLong(6);
-        return new EventVisitsDTO(evt_id, evt_title, evt_type, evt_price, lct_name, visits);
+        long pic = resultSet.getLong(7);
+        EventVisitsDTO eventVisitsDTO = new EventVisitsDTO(evt_id, evt_title, evt_type, evt_price, lct_name, visits);
+        eventVisitsDTO.setPic_id(pic);
+        return eventVisitsDTO;
     }
 }

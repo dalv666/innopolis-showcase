@@ -89,4 +89,10 @@ var SearchRequest = (function () {
     return SearchRequest;
 }());
 exports.SearchRequest = SearchRequest;
+var EventDTO = (function () {
+    function EventDTO() {
+    }
+    return EventDTO;
+}());
+exports.EventDTO = EventDTO;
 //# sourceMappingURL=models.js.map

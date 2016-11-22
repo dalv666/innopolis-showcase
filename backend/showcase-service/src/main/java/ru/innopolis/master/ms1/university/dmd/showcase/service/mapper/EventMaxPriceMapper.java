@@ -18,8 +18,10 @@ public class EventMaxPriceMapper implements RowMapper<EventMaxPriceDTO> {
         String evt_title = resultSet.getString(2);
         double evt_price = resultSet.getDouble(3);
         String lct_name = resultSet.getString(4);
-
-        return new EventMaxPriceDTO(evt_id, evt_title, evt_price, lct_name);
+        long pic = resultSet.getLong(5);
+        EventMaxPriceDTO eventMaxPriceDTO = new EventMaxPriceDTO(evt_id, evt_title, evt_price, lct_name);
+        eventMaxPriceDTO.setPic_id(pic);
+        return eventMaxPriceDTO;
     }
 
 }

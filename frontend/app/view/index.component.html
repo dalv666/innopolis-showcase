@@ -1,136 +1,45 @@
-<div class="col-md-6">
-
-  <!--Panel-->
-  <div class="card card-block text-xs-center table-responsive">
-      <h4 class="card-title">Event stat</h4>
-      <hr>
-      <table class="table table-bordered table-sm">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>evt_title</th>
-            <th>evt_type</th>
-            <th>evt_price</th>
-            <th>lct_name</th>
-            <th>visits</th>
-          </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let eventsStat of eventsStats; let i=index" >
-          <th scope="row">{{i+1}}</th>
-          <td>{{eventsStat.evt_title}}</td>
-          <td>{{eventsStat.evt_type}}</td>
-          <td>{{eventsStat.evt_price}}</td>
-          <td>{{eventsStat.lct_name}}</td>
-          <td>{{eventsStat.visits}}</td>
-        </tr>
-        </tbody>
-      </table>
-  </div>
-  <!--/.Panel-->
-</div>
-
-
-
-<div class="col-md-6">
-  <!--Panel-->
-  <div class="card card-block text-xs-center table-responsive">
-        <h4 class="card-title">Event stat</h4>
-        <hr>
-    <table class="table table-bordered table-sm">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>evt_id</th>
-          <th>evt_title</th>
-          <th>lct_name</th>
-          <th>evt_price</th>
-        </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let event of eventCityMaxStat; let i=index" >
-        <th scope="row">{{i+1}}</th>
-        <td>{{event.evt_id}}</td>
-        <td>{{event.evt_title}}</td>
-        <td>{{event.lct_name}}</td>
-        <td>{{event.evt_price}}</td>
-      </tr>
-      </tbody>
-    </table>
-</div>
-<!--/.Panel-->
-</div>
-
-
-<div class="col-md-6">
-  <!--Panel-->
-  <div class="card card-block text-xs-center table-responsive">
-        <h4 class="card-title">Event stat</h4>
-        <hr>
-    <table class="table table-bordered table-sm">
-      <thead>
-        <tr>
-          <th>#</th>
-      <!--    <th>evt_id</th>-->
-          <th>evt_title<th>
-          <th>evt_type</th>
-          <th>evt_price</th>
-          <th>cty_name</th>
-        </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let event of eventCatMaxStat; let i=index" >
-        <th scope="row">{{i+1}}</th>
-    <!-- <td>{{event.evt_id}}</td> -->
-        <td>{{event.evt_title}}</td>
-        <td>{{event.evt_type}}</td>
-        <td>{{event.evt_price}}</td>
-        <td>{{event.cty_name}}</td>
-      </tr>
-      </tbody>
-    </table>
-</div>
-<!--/.Panel-->
-</div>
-
-
-<div class="col-md-6">
-  <!--Panel-->
-  <div class="card card-block text-xs-center table-responsive">
-        <h4 class="card-title">Event stat</h4>
-        <hr>
-    <table class="table table-bordered table-sm">
-      <thead>
-        <tr>
-          <th>#</th>
-      <!--    <th>usr_id</th> -->
-          <th>usr_name<th>
-          <th>usr_scn_name</th>
-          <th>usr_fst_name</th>
-        <!--  <th>usr_email</th>-->
-          <th>visits</th>
-        </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let user of usersActivity; let i=index" >
-        <th scope="row">{{i+1}}</th>
-    <!--    <td>{{user.usr_id}}</td>-->
-        <td>{{user.usr_name}}</td>
-        <td>{{user.usr_scn_name}}</td>
-        <td>{{user.usr_fst_name}}</td>
-      <!--  <td>{{user.usr_email}}</td>-->
-        <td>{{user.visits}}</td>
-      </tr>
-      </tbody>
-    </table>
-</div>
-<!--/.Panel-->
-</div>
-
-
-
-
 <div class="col-md-12">
+
+      <h4 class="card-title">Popular events</h4>
+      <hr>
+
+
+      <div class="card-group">
+          <div class="card" *ngFor="let eventsStat of eventsStats">
+              <a href="/event/{{eventsStat.evt_id}}"> <img src="{{eventsStat.pic_url}}" class="img-fluid rounded" alt=""></a>
+              <div class="card-block">
+                  <h4 class="card-title">{{eventsStat.evt_title}}</h4>
+                  <p class="card-text">{{eventsStat.lct_name}} - {{eventsStat.evt_price}}</p>
+                  <p class="card-text"><small class="text-muted">Visitors: {{eventsStat.visits}}</small></p>
+              </div>
+          </div>
+      </div>
+
+
+        <h4 class="card-title" style="margin-top:20px;">Event by city</h4>
+        <hr>
+
+        <div *ngFor="let event of eventCityMaxStat" class="col-md-3">
+
+
+
+          <h5>{{event.lct_name}}</h5>
+              <div class="view overlay hm-zoom hm-black-light">
+                  <a href="/event/{{event.evt_id}}"> <img src="{{event.pic_url}}" class="img-fluid rounded" alt=""></a>
+                  <div class="mask flex-center waves-effect waves-light">
+                      <p class="white-text">{{event.evt_title}}</p>
+                  </div>
+              </div>
+        </div>
+
+
+
+
+
+
+<div class="col-md-12" style="margin-top:20px;">
+  <h4 class="card-title">Intresting events</h4>
+  <hr>
   <div class="col-md-4" *ngFor="let event of events; let i=index" >
     <!--Card-->
     <div class="card">
@@ -181,3 +90,53 @@
     </div>
     <!--/.Card-->
   </div>
+</div>
+
+
+<div class="col-md-8" style="margin-top:20px;">
+  <!--Panel-->
+  <div class="card card-block text-xs-center table-responsive">
+        <h4 class="card-title">Event statistics by city</h4>
+        <hr>
+    <table class="table table-bordered table-sm text-xs-center">
+      <thead class="thead-inverse text-xs-center">
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Type</th>
+          <th>Price</th>
+          <th>City</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let event of eventCatMaxStat; let i=index" >
+        <th scope="row">{{i+1}}</th>
+        <td><a href="/event/{{event.evt_id}}">{{event.evt_title}}</a></td>
+        <td  [ngSwitch]="event.evt_type" class="text-xs-center">
+          <i *ngSwitchCase="'SPECTACLE'" class="fa fa-child fa-2x"></i>
+          <i *ngSwitchCase="'MOVIE'" class="fa fa-camera-retro fa-2x"></i>
+        </td>
+        <td>{{event.evt_price}}</td>
+        <td>{{event.cty_name}}</td>
+      </tr>
+      </tbody>
+    </table>
+</div>
+<!--/.Panel-->
+</div>
+
+
+
+
+
+        <div class="col-md-4" style="margin-top:20px;">
+          <!--Panel-->
+          <div class="card card-block text-xs-center table-responsive">
+                <h4 class="card-title">Active users</h4>
+                <hr>
+                <p *ngFor="let user of usersActivity; let i=index" >
+                  {{user.usr_fst_name}} {{user.usr_scn_name}} ({{user.usr_name}}) <span class="tag blue">{{user.visits}}</span>
+                </p>
+        </div>
+        <!--/.Panel-->
+        </div>

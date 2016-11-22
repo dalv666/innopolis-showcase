@@ -29,7 +29,7 @@ export class LoginComponent {
             response => {
                 if(response.text()==="true"){
                   localStorage.setItem('id_token', '1');
-                  this.router.navigate(['events']);
+                  this.router.navigate(['index']);
                 }else{
                   this.showError();
                 }

@@ -51,16 +51,15 @@ public class EventDAOImpl extends JdbcDaoSupport implements EventDAOCustom {
         return nativeQuery.getResultList();
     }
 
-    public List<EventDTO> findEventsByFilters(String title, String cityName, long price, String date) {
-
-        String sql = "SELECT e.evt_id, e.evt_title, e.evt_type, e.evt_price, e.evt_duration, p.pic_link, l.lct_name, c.cty_name " +
+    public List<EventDTO> findEventsByFilters(String title, String cityName, Long price) {
+        String sql = "SELECT e.evt_id, e.evt_title, e.evt_type, e.evt_price, e.evt_duration, p.pic_link, l.lct_name, c.cty_name, e.evt_description, e.evt_capacity " +
                 "FROM event e LEFT JOIN location l ON e.location_lct_id = l.lct_id " +
                 "LEFT JOIN picture p ON e.picture_pic_id = p.pic_id " +
                 "LEFT JOIN city c ON l.city_cty_id = c.cty_id " +
                 "WHERE e.evt_title LIKE ? AND " +
-                "c.cty_name = ? AND " +
+                "c.cty_name LIKE ? AND " +
                 "e.evt_price <= ?";
-        List<EventDTO> query = getJdbcTemplate().query(sql, new Object[]{title, cityName, price}, new EventMapper());
+        List<EventDTO> query = getJdbcTemplate().query(sql, new Object[]{"%"+title+"%", "%"+cityName+"%", price}, new EventMapper());
         return query;
     }
 
@@ -68,8 +67,8 @@ public class EventDAOImpl extends JdbcDaoSupport implements EventDAOCustom {
     {
         String sql =
             "SELECT e.evt_id, e.evt_title, e.evt_type, e.evt_price, l.lct_name," +
-            "(SELECT COUNT(*) FROM usr_event ue WHERE ue.events_evt_id = e.evt_id)" +
-            "FROM event e LEFT JOIN location l ON e.location_lct_id = l.lct_id";
+            "(SELECT COUNT(*) FROM usr_event ue WHERE ue.events_evt_id = e.evt_id) AS cnt, e.picture_pic_id " +
+            "FROM event e LEFT JOIN location l ON e.location_lct_id = l.lct_id ORDER BY cnt DESC LIMIT 5";
         List<EventVisitsDTO> query = getJdbcTemplate().query(sql, new EventVisitsMapper());
         return query;
     }
@@ -77,7 +76,7 @@ public class EventDAOImpl extends JdbcDaoSupport implements EventDAOCustom {
     public List<EventMaxPriceDTO> findEventsByMaxPrice()
     {
         String sql =
-            "SELECT DISTINCT e1.evt_id, e1.evt_title, e1.evt_price, c.cty_name " +
+            "SELECT DISTINCT e1.evt_id, e1.evt_title, e1.evt_price, c.cty_name, e1.picture_pic_id " +
             "FROM event e1 LEFT JOIN location l1 ON e1.location_lct_id = l1.lct_id " +
             "LEFT JOIN city c ON l1.city_cty_id = c.cty_id " +
             "RIGHT JOIN (" +
@@ -150,18 +149,18 @@ public class EventDAOImpl extends JdbcDaoSupport implements EventDAOCustom {
         return query;
     }
 
-    public List<UsersActivityDTO> findTopActivityUsers(long topCount)
+    public List<UsersActivityDTO> findTopActivityUsers()
     {
         String sql =
-                "SELECT u.usr_id, u.usr_scn_name, u.usr_fst_name, u.usr_email, a.visits " +
+                "SELECT u.usr_id, u.usr_login, u.usr_scn_name, u.usr_fst_name, u.usr_email, a.visits " +
                         "FROM usr u LEFT JOIN " +
                         "    (SELECT ue.users_usr_id, COUNT(*) as visits " +
                         "FROM usr_event ue LEFT JOIN usr u ON ue.users_usr_id = u.usr_id " +
                         "GROUP BY users_usr_id) " +
                         "a ON u.usr_id = a.users_usr_id " +
                         "ORDER BY a.visits, u.usr_scn_name, u.usr_fst_name " +
-                        "LIMIT ?";
-        List<UsersActivityDTO> query = getJdbcTemplate().query(sql, new Object[]{topCount}, new UsersActivityMapper());
+                        "LIMIT 5";
+        List<UsersActivityDTO> query = getJdbcTemplate().query(sql, new Object[]{}, new UsersActivityMapper());
         return query;
     }
 

@@ -17,7 +17,7 @@ public interface EventService extends GenericCRUD<Event> {
 
     void userNoGoEvent(long userId, long eventId);
 
-    List<EventDTO> findEventsByFilters(String title, String cityName, long price, String date);
+    List<EventDTO> findEventsByFilters(String title, String cityName, Long price);
 
     List<EventVisitsDTO> findEventVisits();
 
@@ -31,7 +31,7 @@ public interface EventService extends GenericCRUD<Event> {
 
     List<LectureFinderDTO> findLeсturesByLecturerName(String lecturerName);
 
-    List<UsersActivityDTO> findTopActivityUsers(long topCount);
+    List<UsersActivityDTO> findTopActivityUsers();
 
 
 

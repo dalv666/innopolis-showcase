@@ -4,7 +4,7 @@ import {Event} from './../model/event';
 import {EventService} from './../service/event.service';
 import { OnInit,OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import {SearchRequest} from './../model/models';
+import {SearchRequest,EventDTO} from './../model/models';
 
 @Component({
     selector: 'events',
@@ -26,15 +26,21 @@ import {SearchRequest} from './../model/models';
 })
 export class SearchComponent implements OnInit{
     errorMessage:string;
-    events: Event[];
+    events: EventDTO[];
     public first:boolean;
     public second:boolean;
     public third:boolean;
 
+    public title:string;
+    public city:string;
+    public price:number;
+
     searchRequest:SearchRequest;
 
     ngOnInit(): void {
-      this.getEvents();
+      this.title="Event";
+      this.city="Innopolis";
+      this.price=9999999;
       this.first = true;
       this.second = true;
       this.third = true;
@@ -49,16 +55,18 @@ export class SearchComponent implements OnInit{
     ) { }
 
 
-    getEvents():void {
-      this.eventService.getEvents()
+    onSelect(event:Event):void {
+      this.selectedEvent = event;
+    }
+
+    search():void{
+      this.eventService.getSearch(this.title,this.city,this.price)
                            .subscribe(
                              events => this.events = events,
                              error =>  this.errorMessage = <any>error);
-
-    }
-
-    onSelect(event:Event):void {
-      this.selectedEvent = event;
+      console.log(this.title);
+      console.log(this.city);
+      console.log(this.price);
     }
 
     gotoDetail(event:Event):void{

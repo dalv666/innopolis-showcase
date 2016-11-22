@@ -91,6 +91,7 @@ export class EventStat {
     evt_price: number;
     lct_name: string;
     visits: number;
+    pic_url: string;
 }
 
 export class EventCityMaxStat {
@@ -98,6 +99,7 @@ export class EventCityMaxStat {
     evt_title: string;
     evt_price: number;
     lct_name: string;
+    pic_url: string;
 }
 
 
@@ -127,4 +129,15 @@ export class SearchRequest{
     price: number;
     third: boolean;
     category: string;
+}
+
+export class EventDTO {
+    id: number;
+    title: string;
+    type: string;
+    pic_link: string;
+    duration: number;
+    price: number;
+    lct_name: string;
+    cty_name: string;
 }

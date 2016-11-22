@@ -22,75 +22,86 @@ import java.util.List;
 @Component
 @ComponentScan(basePackages = "ru.innopolis.master.ms1.university.dmd.showcase.service.service")
 public class InitDB {
-    @Autowired private UserDAOCustom userDAO;
-    @Autowired private PictureService pictureService;
-    @Autowired private CityService cityService;
-    @Autowired private LocationService locationService;
-    @Autowired private UserService userService;
-    @Autowired private MovieService movieService;
-    @Autowired private PersonService personService;
-    @Autowired private GroupService groupService;
-    @Autowired private AwardService awardService;
-    @Autowired private SpectacleEventService spectacleEventService;
-    @Autowired private MovieEventService movieEventService;
+    @Autowired
+    private UserDAOCustom userDAO;
+    @Autowired
+    private PictureService pictureService;
+    @Autowired
+    private CityService cityService;
+    @Autowired
+    private LocationService locationService;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private MovieService movieService;
+    @Autowired
+    private PersonService personService;
+    @Autowired
+    private GroupService groupService;
+    @Autowired
+    private AwardService awardService;
+    @Autowired
+    private SpectacleEventService spectacleEventService;
+    @Autowired
+    private MovieEventService movieEventService;
 
     public static final String LOREM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae venenatis sapien, sit amet scelerisque dui.";
 
     public static final Picture[] PICTURES = {
-            new Picture(0,"https://images.unsplash.com/photo-1461567797193-e5b489ac026a?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=9294ccb662f5174d39da333d5025aa84"),
-            new Picture(1,"https://images.unsplash.com/photo-1473396413399-6717ef7c4093?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=5d92910bd80f5d362f93337f5e2cc6bd"),
-            new Picture(2,"https://images.unsplash.com/photo-1472589757312-2f192d867ee2?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=0776843e16055a640b8983a1ab38099b"),
-            new Picture(3,"https://images.unsplash.com/photo-1452626038306-9aae5e071dd3?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=f043061c9a5cdbd0fc2f114e2f52f0fd"),
-            new Picture(4,"https://images.unsplash.com/photo-1447169685565-fedaa08420df?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=1d07c7e46fcd24c58667b80aed96b5e4"),
-            new Picture(5,"https://images.unsplash.com/photo-1472584069410-35e46830b642?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=f518018805c27da0877a726eeb361a04"),
-            new Picture(6,"https://images.unsplash.com/photo-1463415268136-e52a5af54519?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=df33064facbaa0e357950b11beb0674f"),
-            new Picture(7,"https://images.unsplash.com/photo-1454908027598-28c44b1716c1?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=d9de0ce5f8eb714df8fee97045ab0153"),
-            new Picture(8,"https://images.unsplash.com/17/unsplash_5252bb51404f8_1.JPG?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=8b039ddc4a423e54da613e8075b3c588"),
-            new Picture(9,"https://images.unsplash.com/photo-1468869196565-78ea346a98ee?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=a97c6d93f742cfe38fc42c23ecbd29dc"),
-            new Picture(10,"https://images.unsplash.com/photo-1458891216473-4f26bb4eb40e?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=e6da5085d31b76323195e78284ab3f61"),
+            new Picture(0, "https://images.unsplash.com/photo-1461567797193-e5b489ac026a?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=9294ccb662f5174d39da333d5025aa84"),
+            new Picture(1, "https://images.unsplash.com/photo-1473396413399-6717ef7c4093?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=5d92910bd80f5d362f93337f5e2cc6bd"),
+            new Picture(2, "https://images.unsplash.com/photo-1472589757312-2f192d867ee2?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=0776843e16055a640b8983a1ab38099b"),
+            new Picture(3, "https://images.unsplash.com/photo-1452626038306-9aae5e071dd3?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=f043061c9a5cdbd0fc2f114e2f52f0fd"),
+            new Picture(4, "https://images.unsplash.com/photo-1447169685565-fedaa08420df?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=1d07c7e46fcd24c58667b80aed96b5e4"),
+            new Picture(5, "https://images.unsplash.com/photo-1472584069410-35e46830b642?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=f518018805c27da0877a726eeb361a04"),
+            new Picture(6, "https://images.unsplash.com/photo-1463415268136-e52a5af54519?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=df33064facbaa0e357950b11beb0674f"),
+            new Picture(7, "https://images.unsplash.com/photo-1454908027598-28c44b1716c1?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=d9de0ce5f8eb714df8fee97045ab0153"),
+            new Picture(8, "https://images.unsplash.com/17/unsplash_5252bb51404f8_1.JPG?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=8b039ddc4a423e54da613e8075b3c588"),
+            new Picture(9, "https://images.unsplash.com/photo-1468869196565-78ea346a98ee?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=a97c6d93f742cfe38fc42c23ecbd29dc"),
+            new Picture(10, "https://images.unsplash.com/photo-1458891216473-4f26bb4eb40e?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=e6da5085d31b76323195e78284ab3f61"),
             // City
-            new Picture(11,"https://images.unsplash.com/photo-1423589989400-cc0270157ed0?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=2a82500a87823929ccc2055a2b0f19f9"),
+            new Picture(11, "https://images.unsplash.com/photo-1423589989400-cc0270157ed0?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=2a82500a87823929ccc2055a2b0f19f9"),
             // Avatar
-            new Picture(12,"https://images.unsplash.com/photo-1457706924510-773f3c796de3?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=9d9045d15a89c81ce5b397e844d249f8"),
+            new Picture(12, "https://images.unsplash.com/photo-1457706924510-773f3c796de3?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=9d9045d15a89c81ce5b397e844d249f8"),
             // Film
-            new Picture(13,"https://images.unsplash.com/photo-1468857006728-bba1dba0eb7f?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=f3f0f4c583e2d9b59681fccc5b8a24bc"),
+            new Picture(13, "https://images.unsplash.com/photo-1468857006728-bba1dba0eb7f?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=f3f0f4c583e2d9b59681fccc5b8a24bc"),
             // Group
-            new Picture(14,"https://images.unsplash.com/photo-1443381301867-5a36ffaafc42?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=210b403c4bca16ba0ca21c46a9996bc0"),
-            new Picture(15,"https://images.unsplash.com/photo-1469566918525-f615c354a7eb?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=b9f1631c6d8eab30b90061dbd2ef3689"),
-            new Picture(16,"http://www.meros.org/uploads/gallery/64/51/03/6465110380d1487aa4d8a8d60ada3128.jpg"),
-            new Picture(17,"https://img-fotki.yandex.ru/get/64120/169643165.13/0_10d4c7_15294d7e_XL.jpg"),
-            new Picture(18,"http://img-fotki.yandex.ru/get/6839/30348152.197/0_80d0d_8d5e86fd_orig"),
-            new Picture(19,"http://www.i-irk.com/upload/gallery/vechernee_foto_irkutska_(2)._71013_70.jpg"),
-            new Picture(20,"http://fb.ru/misc/i/gallery/5067/474776.jpg"),
-            new Picture(21,"http://img.travel.ru/images2/2004/06/object37298/dvorec_zemledelzev.jpg"),
-            new Picture(22,"http://bestvuz.ru/images/goroda/habarovsk1.jpg"),
-            new Picture(23,"http://kudago.com/media/images/news/03/68/03683b7cf4d02da61dc69bb0165dca10.jpg"),
-            new Picture(24,"http://rprs.sfu-kras.ru/sites/default/files/kommunalnyy_most.jpg"),
-            new Picture(25,"http://nesiditsa.ru/wp-content/uploads/2012/07/125.jpg"),
-            new Picture(26,"http://www.bankgorodov.ru/public//photos/places/Mah-44546.jpg"),
-            new Picture(27,"https://travel.rambler.ru/media/original_images/54aaf2696fb1e.jpg"),
-            new Picture(28,"http://stranadetstva30.ru/assets/images/naberezhnye-chelny.jpg"),
-            new Picture(29,"http://livepixel.org/wp-content/uploads/2015/03/nnovgorod05.jpeg"),
-            new Picture(30,"http://novokuznetsk.go2all.ru/imgs/55/1/83986.jpg"),
-            new Picture(31,"http://www.transsiberianfestival.com/media/upload/novosibirsk/Novosib_1.jpg"),
-            new Picture(32,"http://nesiditsa.ru/wp-content/uploads/2012/09/516.jpg"),
-            new Picture(33,"http://nesiditsa.ru/wp-content/uploads/2012/07/Nochnoy-Orenburg.jpg"),
-            new Picture(34,"http://www.my-miir.ru/upload/О%20городе2.jpg"),
-            new Picture(35,"http://ppjournal.ru/img/dostopr/dostoprimechatelnosti-permi.jpg"),
-            new Picture(36,"http://mama-predprinimatel.ru/upload/iblock/6be/6be0936fadf9bb7fffd37b21c0ccf987.png"),
-            new Picture(37,"http://strana.ru/media/images/uploaded/gallery_promo21250667.jpg"),
-            new Picture(38,"http://sakvoyage.perm.ru/userfiles/Image/Spb_osen.jpg"),
-            new Picture(39,"http://ntt.com.ru/images/gd/samara.jpeg"),
-            new Picture(40,"http://travelask.ru/system/images/files/000/052/437/wysiwyg/из_липок.jpg?1442480294"),
-            new Picture(41,"https://kudago.com/media/images/place/04/5c/045c736f8f8ec02ce86607af82580d9c.jpg"),
-            new Picture(42,"http://tonb.ru/local_history/local_history_images/78.jpg"),
-            new Picture(43,"http://nt22.ru/images/ufa-bashkiria.jpg"),
-            new Picture(44,"http://strana.ru/media/images/uploaded/gallery_promo20837434.jpg"),
-            new Picture(45,"http://deita.ru/upload/iblock/b03/most_zolotoy_rog.jpg"),
-            new Picture(46,"http://fifa-worldcup2018.ru/images/volgograd_dostop1.jpg"),
-            new Picture(47,"http://kobalt-tur.ru/images/yaroslavlzh.jpg"),
-            new Picture(48,"http://mcselect.ru/wp-content/uploads/2015/07/excursion-spain.jpg"),
-            new Picture(49,"https://university.innopolis.ru/upload/resize_cache/iblock/8a8/1920_869_275511db9cefbc414a902a46f1b8fae16/150807-DSC_9145-Platonov.jpg"),
+            new Picture(14, "https://images.unsplash.com/photo-1443381301867-5a36ffaafc42?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=210b403c4bca16ba0ca21c46a9996bc0"),
+            new Picture(15, "https://images.unsplash.com/photo-1469566918525-f615c354a7eb?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=b9f1631c6d8eab30b90061dbd2ef3689"),
+            new Picture(16, "http://www.meros.org/uploads/gallery/64/51/03/6465110380d1487aa4d8a8d60ada3128.jpg"),
+            new Picture(17, "https://img-fotki.yandex.ru/get/64120/169643165.13/0_10d4c7_15294d7e_XL.jpg"),
+            new Picture(18, "http://img-fotki.yandex.ru/get/6839/30348152.197/0_80d0d_8d5e86fd_orig"),
+            new Picture(19, "http://www.i-irk.com/upload/gallery/vechernee_foto_irkutska_(2)._71013_70.jpg"),
+            new Picture(20, "http://fb.ru/misc/i/gallery/5067/474776.jpg"),
+            new Picture(21, "http://img.travel.ru/images2/2004/06/object37298/dvorec_zemledelzev.jpg"),
+            new Picture(22, "http://bestvuz.ru/images/goroda/habarovsk1.jpg"),
+            new Picture(23, "http://kudago.com/media/images/news/03/68/03683b7cf4d02da61dc69bb0165dca10.jpg"),
+            new Picture(24, "http://rprs.sfu-kras.ru/sites/default/files/kommunalnyy_most.jpg"),
+            new Picture(25, "http://nesiditsa.ru/wp-content/uploads/2012/07/125.jpg"),
+            new Picture(26, "http://www.bankgorodov.ru/public//photos/places/Mah-44546.jpg"),
+            new Picture(27, "https://travel.rambler.ru/media/original_images/54aaf2696fb1e.jpg"),
+            new Picture(28, "http://stranadetstva30.ru/assets/images/naberezhnye-chelny.jpg"),
+            new Picture(29, "http://livepixel.org/wp-content/uploads/2015/03/nnovgorod05.jpeg"),
+            new Picture(30, "http://novokuznetsk.go2all.ru/imgs/55/1/83986.jpg"),
+            new Picture(31, "http://www.transsiberianfestival.com/media/upload/novosibirsk/Novosib_1.jpg"),
+            new Picture(32, "http://nesiditsa.ru/wp-content/uploads/2012/09/516.jpg"),
+            new Picture(33, "http://nesiditsa.ru/wp-content/uploads/2012/07/Nochnoy-Orenburg.jpg"),
+            new Picture(34, "http://www.my-miir.ru/upload/О%20городе2.jpg"),
+            new Picture(35, "http://ppjournal.ru/img/dostopr/dostoprimechatelnosti-permi.jpg"),
+            new Picture(36, "http://mama-predprinimatel.ru/upload/iblock/6be/6be0936fadf9bb7fffd37b21c0ccf987.png"),
+            new Picture(37, "http://strana.ru/media/images/uploaded/gallery_promo21250667.jpg"),
+            new Picture(38, "http://sakvoyage.perm.ru/userfiles/Image/Spb_osen.jpg"),
+            new Picture(39, "http://ntt.com.ru/images/gd/samara.jpeg"),
+            new Picture(40, "http://travelask.ru/system/images/files/000/052/437/wysiwyg/из_липок.jpg?1442480294"),
+            new Picture(41, "https://kudago.com/media/images/place/04/5c/045c736f8f8ec02ce86607af82580d9c.jpg"),
+            new Picture(42, "http://tonb.ru/local_history/local_history_images/78.jpg"),
+            new Picture(43, "http://nt22.ru/images/ufa-bashkiria.jpg"),
+            new Picture(44, "http://strana.ru/media/images/uploaded/gallery_promo20837434.jpg"),
+            new Picture(45, "http://deita.ru/upload/iblock/b03/most_zolotoy_rog.jpg"),
+            new Picture(46, "http://fifa-worldcup2018.ru/images/volgograd_dostop1.jpg"),
+            new Picture(47, "http://kobalt-tur.ru/images/yaroslavlzh.jpg"),
+            new Picture(48, "http://mcselect.ru/wp-content/uploads/2015/07/excursion-spain.jpg"),
+            new Picture(49, "https://university.innopolis.ru/upload/resize_cache/iblock/8a8/1920_869_275511db9cefbc414a902a46f1b8fae16/150807-DSC_9145-Platonov.jpg"),
     };
 
     public static final City[] CITIES = {

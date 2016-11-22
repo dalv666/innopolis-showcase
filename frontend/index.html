@@ -1,6 +1,30 @@
 <html>
   <head>
     <style>
+
+
+    .chip {
+        font-size: 13px;
+        color: rgba(0,0,0,.6);
+        padding: 0 12px;
+        border-radius: 16px;
+        background-color: #eceff1;
+        margin-bottom: 1rem;
+        margin-right: .5rem;
+        display: inline-block;
+        font-weight: 500;
+        height: 32px;
+        line-height: 32px;
+    }
+
+    .chip img {
+    float: left;
+    margin: 0 8px 0 -12px;
+    height: 32px !important;
+    width: 32px;
+    border-radius: 50% !important;
+}
+
     .navbar .nav-item.avatar.active {
         background-color: transparent!important;
     }
@@ -146,11 +170,6 @@
                 </ul>
 
 
-                <ul class="nav navbar-nav nav-flex-icons">
-                  <li class="nav-item">
-                      <a class="nav-link" href="/login">Login</a>
-                  </li>
-                </ul>
                 <!--Search form-->
                 <form class="form-inline" style="margin-bottom: 0em;">
                     <input class="form-control" type="text" placeholder="Search">
@@ -187,6 +206,47 @@
       </div>
     </main>
 
+    <!--Footer-->
+    <footer class="page-footer blue center-on-small-only" style="margin-top:220px;">
+
+        <!--Footer Links-->
+        <div class="container-fluid">
+            <div class="row">
+
+                <!--First column-->
+                <div class="col-md-6">
+                    <h5 class="title">SHOWCASE</h5>
+                    <p>ALL EVENTS OF YOUR CITY <br>
+                      This is our DMD project.</p>
+                </div>
+                <!--/.First column-->
+
+                <!--Second column-->
+                <div class="col-md-6">
+                    <h5 class="title">Links</h5>
+                    <ul>
+                        <li><a href="/">Index</a></li>
+                        <li><a href="/events">Events</a></li>
+                        <li><a href="/search">Search</a></li>
+                        <li><a href="/login">Login</a></li>
+                    </ul>
+                </div>
+                <!--/.Second column-->
+            </div>
+        </div>
+        <!--/.Footer Links-->
+
+        <!--Copyright-->
+        <div class="footer-copyright">
+            <div class="container-fluid">
+                © 2016 Copyright: DMD
+
+            </div>
+        </div>
+        <!--/.Copyright-->
+
+    </footer>
+    <!--/.Footer-->
 
     <!-- SCRIPTS -->
     <!-- JQuery -->

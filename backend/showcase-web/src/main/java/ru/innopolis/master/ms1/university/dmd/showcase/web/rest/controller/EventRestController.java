@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import ru.innopolis.master.ms1.university.dmd.showcase.common.model.Event;
+import ru.innopolis.master.ms1.university.dmd.showcase.common.model.Picture;
 import ru.innopolis.master.ms1.university.dmd.showcase.common.model.dto.*;
 import ru.innopolis.master.ms1.university.dmd.showcase.service.service.EventService;
+import ru.innopolis.master.ms1.university.dmd.showcase.service.service.PictureService;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,6 +21,9 @@ public class EventRestController {
 
     @Autowired
     private EventService eventService;
+
+    @Autowired
+    private PictureService pictureService;
 
     @GetMapping("/events")
     public List getCustomers() {
@@ -41,24 +46,17 @@ public class EventRestController {
 
     @GetMapping("/event/filter/")
     public List getFilteredEvents() {
-        return eventService.findEventsByFilters("e", "name", 1, null);
+        return eventService.findEventsByFilters("e", "name", 1l);
     }
-
-    @GetMapping("/event/attend/stat")
-    public List getEventStatAttendStat() {
-        EventVisitsDTO eventVisitsDTO = new EventVisitsDTO(1, "LUX", "GE", 123d, "DIGA", 225);
-        EventVisitsDTO eventVisitsDTO2 = new EventVisitsDTO(1, "LUX", "GE", 123d, "DIGA", 225);
-        ArrayList<EventVisitsDTO> eventVisitsDTOs = new ArrayList<EventVisitsDTO>();
-        eventVisitsDTOs.add(eventVisitsDTO);
-        eventVisitsDTOs.add(eventVisitsDTO2);
-        return eventVisitsDTOs;
-    }
-
 
 
     @GetMapping("/event/max/city")
     public List getEventMaxPriceCityDTO() {
         List<EventMaxPriceDTO> eventVisitsDTOs = eventService.findEventsByMaxPrice();
+        for (EventMaxPriceDTO eventVisitsDTO : eventVisitsDTOs) {
+            Picture byId = pictureService.findById(eventVisitsDTO.getPic_id());
+            eventVisitsDTO.setPic_url(byId.getPicture());
+        }
         return eventVisitsDTOs;
     }
 
@@ -83,29 +81,42 @@ public class EventRestController {
 
 
     @GetMapping("/user/actives")
-    public List getUsersActivityDTO(long topCount) {
-        List<UsersActivityDTO> usersActivityDTOs = eventService.findTopActivityUsers(topCount);
+    public List getUsersActivityDTO() {
+        List<UsersActivityDTO> usersActivityDTOs = eventService.findTopActivityUsers();
         return usersActivityDTOs;
     }
 
 
-    @GetMapping("/event/search")
-    public List findEventsByFilters(String title, String cityName, long price, String category){
-        List<EventDTO> eventDTOs = eventService.findEventsByFilters(title, cityName, price, category);
+    @GetMapping("/event/search/{title}/{city}/{maxPrice}")
+    public List findEventsByFilters(@PathVariable String title, @PathVariable String city, @PathVariable Long maxPrice) {
+        if (title == null) {
+            title = "";
+        }
+        if (city == null) {
+            city = "";
+        }
+        if (maxPrice == null) {
+            maxPrice = Long.MAX_VALUE;
+        }
+
+        List<EventDTO> eventDTOs = eventService.findEventsByFilters(title, city, maxPrice);
         return eventDTOs;
     }
 
+
     @GetMapping("/event/lecture/search/by_author")
-    public List<LectureFinderDTO> findLeсturesByLecturerName(String lecturerName)
-    {
+    public List<LectureFinderDTO> findLeсturesByLecturerName(String lecturerName) {
         List<LectureFinderDTO> lectureFinderDTOs = eventService.findLeсturesByLecturerName(lecturerName);
         return lectureFinderDTOs;
     }
 
-    @GetMapping("/event/visits")
-    public List<EventVisitsDTO> findEventVisits()
-    {
+    @GetMapping("/event/attend/stat")
+    public List<EventVisitsDTO> findEventVisits() {
         List<EventVisitsDTO> eventVisitsDTOs = eventService.findEventVisits();
+        for (EventVisitsDTO eventVisitsDTO : eventVisitsDTOs) {
+            Picture byId = pictureService.findById(eventVisitsDTO.getPic_id());
+            eventVisitsDTO.setPic_url(byId.getPicture());
+        }
         return eventVisitsDTOs;
     }
 }

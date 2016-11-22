@@ -85,8 +85,8 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public List<EventDTO> findEventsByFilters(String title, String cityName, long price, String date) {
-        return eventDaoImpl.findEventsByFilters(title, cityName, price, date);
+    public List<EventDTO> findEventsByFilters(String title, String cityName, Long price) {
+        return eventDaoImpl.findEventsByFilters(title, cityName, price);
     }
 
     @Override
@@ -120,8 +120,8 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public List<UsersActivityDTO> findTopActivityUsers(long topCount) {
-        return eventDaoImpl.findTopActivityUsers(topCount);
+    public List<UsersActivityDTO> findTopActivityUsers() {
+        return eventDaoImpl.findTopActivityUsers();
     }
 
 }

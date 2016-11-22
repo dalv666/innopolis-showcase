@@ -21,6 +21,7 @@ var EventService = (function () {
         this.eventMaxPriceURL = 'http://localhost:8080/rest/event/max/city';
         this.eventCatMaxStatURL = 'http://localhost:8080/rest/event/max/cat';
         this.usersActivityDTOURL = 'http://localhost:8080/rest/user/actives';
+        this.search = 'http://localhost:8080/rest/event/search';
     }
     EventService.prototype.getEvents = function () {
         return this.http.get(this.heroesUrl)
@@ -73,6 +74,11 @@ var EventService = (function () {
     };
     EventService.prototype.getUsersActivityDTO = function () {
         return this.http.get(this.usersActivityDTOURL)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    EventService.prototype.getSearch = function (title, city, price) {
+        return this.http.get(this.search + "/" + title + "/" + city + "/" + price)
             .map(this.extractData)
             .catch(this.handleError);
     };
