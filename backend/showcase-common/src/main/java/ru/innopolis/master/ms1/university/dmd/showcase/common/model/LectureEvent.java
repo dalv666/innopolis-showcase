@@ -24,9 +24,6 @@ public class LectureEvent extends Event {
         this.category = category;
     }
 
-    public Group getGroup() {
-        return group;
-    }
 
     public void setGroup(Group group) {
         this.group = group;

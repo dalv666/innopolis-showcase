@@ -171,8 +171,8 @@
 
 
                 <!--Search form-->
-                <form class="form-inline" style="margin-bottom: 0em;">
-                    <input class="form-control" type="text" placeholder="Search">
+                <form id="fr" class="form-inline" style="margin-bottom: 0em;">
+                    <input id="search" class="form-control" type="text" placeholder="Search">
                 </form>
 
             </div>
@@ -260,5 +260,26 @@
 
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script>
+    $.fn.enterKey = function (fnc) {
+        return this.each(function () {
+            $(this).keypress(function (ev) {
+                var keycode = (ev.keyCode ? ev.keyCode : ev.which);
+                if (keycode == '13') {
+                    fnc.call(this, ev);
+                }
+            })
+        })
+    }
+
+
+  $('#fr').keypress(function (e) {
+    if (e.which == 13) {
+      e.preventDefault();
+      window.location.href = "/search/" + $('#search').val();
+    }
+  });
+
+    </script>
   </body>
 </html>

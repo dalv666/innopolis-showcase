@@ -1,6 +1,7 @@
 package ru.innopolis.master.ms1.university.dmd.showcase.service.dao.custom;
 
 import ru.innopolis.master.ms1.university.dmd.showcase.common.model.Movie;
+import ru.innopolis.master.ms1.university.dmd.showcase.common.model.dto.EventDTO;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -12,4 +13,5 @@ public interface EventDAOCustom {
 
     List<Movie> findMovieByAwardCountAndDate(double rate, LocalDate date);
 
+    List<EventDTO> searchEvent(String text);
 }

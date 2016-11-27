@@ -9,7 +9,7 @@
               <a href="/event/{{eventsStat.evt_id}}"> <img src="{{eventsStat.pic_url}}" class="img-fluid rounded" alt=""></a>
               <div class="card-block">
                   <h4 class="card-title">{{eventsStat.evt_title}}</h4>
-                  <p class="card-text">{{eventsStat.lct_name}} - {{eventsStat.evt_price}}</p>
+                  <p class="card-text">{{eventsStat.lct_name}} - {{eventsStat.evt_price}}<i class="fa fa-dollar"></i></p>
                   <p class="card-text"><small class="text-muted">Visitors: {{eventsStat.visits}}</small></p>
               </div>
           </div>
@@ -64,6 +64,7 @@
             <div class="col-md-2" [ngSwitch]="event.type">
               <i *ngSwitchCase="'SPECTACLE'" class="fa fa-camera-retro fa-2x"></i>
               <i *ngSwitchCase="'MOVIE'" class="fa fa-child fa-2x"></i>
+              <i *ngSwitchCase="'MISC'" class="fa fa-slack fa-2x"></i>
             </div>
           </div>
             <!--Text-->
@@ -115,6 +116,7 @@
         <td  [ngSwitch]="event.evt_type" class="text-xs-center">
           <i *ngSwitchCase="'SPECTACLE'" class="fa fa-child fa-2x"></i>
           <i *ngSwitchCase="'MOVIE'" class="fa fa-camera-retro fa-2x"></i>
+          <i *ngSwitchCase="'MISC'" class="fa fa-slack fa-2x"></i>
         </td>
         <td>{{event.evt_price}}</td>
         <td>{{event.cty_name}}</td>

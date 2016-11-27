@@ -35,6 +35,17 @@ public class Movie implements Serializable {
     @OneToOne
     private Picture picture;
 
+    @OneToOne
+    private Person author;
+
+    public Person getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Person author) {
+        this.author = author;
+    }
+
     public Movie(long id, String name, LocalDate created, String janr, String description, Picture picture) {
         this.id = id;
         this.name = name;

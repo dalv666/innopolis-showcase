@@ -1,7 +1,6 @@
 package ru.innopolis.master.ms1.university.dmd.showcase.service.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Component;
 import ru.innopolis.master.ms1.university.dmd.showcase.common.model.*;
 import ru.innopolis.master.ms1.university.dmd.showcase.service.config.DataSourceConfig;
 import ru.innopolis.master.ms1.university.dmd.showcase.service.config.PersistenceConfig;
-import ru.innopolis.master.ms1.university.dmd.showcase.service.dao.MovieDAO;
 import ru.innopolis.master.ms1.university.dmd.showcase.service.dao.custom.UserDAOCustom;
 import ru.innopolis.master.ms1.university.dmd.showcase.service.service.*;
 

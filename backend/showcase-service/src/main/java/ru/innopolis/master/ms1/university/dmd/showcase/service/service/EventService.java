@@ -33,6 +33,6 @@ public interface EventService extends GenericCRUD<Event> {
 
     List<UsersActivityDTO> findTopActivityUsers();
 
-
+    List<EventDTO> searchEvent(String text);
 
 }

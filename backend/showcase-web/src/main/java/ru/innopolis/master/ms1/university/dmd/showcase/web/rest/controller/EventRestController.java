@@ -119,4 +119,9 @@ public class EventRestController {
         }
         return eventVisitsDTOs;
     }
+
+    @GetMapping("/search/{search}")
+    public List<EventDTO> search(@PathVariable String search) {
+        return eventService.searchEvent(search);
+    }
 }

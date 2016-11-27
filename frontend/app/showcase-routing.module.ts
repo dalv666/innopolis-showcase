@@ -11,6 +11,7 @@ import { AppComponent } from './component/app.component';
 import { MenuComponent} from './component/menu.component';
 import { LoginComponent} from './component/login.component';
 import { PersonDetailComponent} from './component/person-detail.component';
+import { FullSearchComponent } from './component/full-search.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'event/:id',
     component: EventDetailComponent
+  },
+  {
+    path: 'search/:search',
+    component: FullSearchComponent
   },
   {
     path: 'city/:id',

@@ -32,7 +32,7 @@ public class Group implements Serializable {
     @OneToMany
     private Set<Award> awards;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "groups")
     private Set<Person> persons;
 
     @OneToOne
@@ -96,4 +96,5 @@ public class Group implements Serializable {
     public void setAwards(Set<Award> awards) {
         this.awards = awards;
     }
+
 }

@@ -34,6 +34,17 @@ public class Location implements Serializable {
     @OneToOne
     private City city;
 
+    @OneToOne
+    private Picture picture;
+
+    public Picture getPicture() {
+        return picture;
+    }
+
+    public void setPicture(Picture picture) {
+        this.picture = picture;
+    }
+
     public long getId() {
         return id;
     }

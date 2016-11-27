@@ -23,9 +23,6 @@ public class SpectacleEvent extends Event {
         this.director = director;
     }
 
-    public Group getAuthors() {
-        return authors;
-    }
 
     public void setAuthors(Group authors) {
         this.authors = authors;

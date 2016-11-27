@@ -95,4 +95,14 @@ private usersActivityDTOURL = 'http://localhost:8080/rest/user/actives';
                     .catch(this.handleError);
   }
 
+
+
+  private full_search = 'http://localhost:8080/rest/search/';
+
+  getFullSearch(search:string):Observable<EventDTO[]>{
+    return this.http.get(this.full_search+search)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
 }

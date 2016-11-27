@@ -19,6 +19,7 @@ var location_detail_component_1 = require('./component/location-detail.component
 var menu_component_1 = require('./component/menu.component');
 var login_component_1 = require('./component/login.component');
 var person_detail_component_1 = require('./component/person-detail.component');
+var full_search_component_1 = require('./component/full-search.component');
 var routes = [
     {
         path: '',
@@ -44,6 +45,10 @@ var routes = [
     {
         path: 'event/:id',
         component: event_detail_component_1.EventDetailComponent
+    },
+    {
+        path: 'search/:search',
+        component: full_search_component_1.FullSearchComponent
     },
     {
         path: 'city/:id',

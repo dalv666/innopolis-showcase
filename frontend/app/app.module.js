@@ -19,6 +19,7 @@ var location_detail_component_1 = require('./component/location-detail.component
 var login_component_1 = require('./component/login.component');
 var events_component_1 = require('./component/events.component');
 var search_component_1 = require('./component/search.component');
+var full_search_component_1 = require('./component/full-search.component');
 var index_component_1 = require('./component/index.component');
 var menu_component_1 = require('./component/menu.component');
 var showcase_routing_module_1 = require('./showcase-routing.module');
@@ -34,7 +35,7 @@ var AppModule = (function () {
                 showcase_routing_module_1.ShowcaseRoutingModule,
                 http_1.HttpModule
             ],
-            declarations: [app_component_1.AppComponent, event_detail_component_1.EventDetailComponent, location_detail_component_1.LocationDetailComponent, person_detail_component_1.PersonDetailComponent, city_detail_component_1.CityDetailComponent, events_component_1.EventsComponent, menu_component_1.MenuComponent, login_component_1.LoginComponent, search_component_1.SearchComponent, index_component_1.IndexComponent],
+            declarations: [app_component_1.AppComponent, event_detail_component_1.EventDetailComponent, location_detail_component_1.LocationDetailComponent, full_search_component_1.FullSearchComponent, person_detail_component_1.PersonDetailComponent, city_detail_component_1.CityDetailComponent, events_component_1.EventsComponent, menu_component_1.MenuComponent, login_component_1.LoginComponent, search_component_1.SearchComponent, index_component_1.IndexComponent],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

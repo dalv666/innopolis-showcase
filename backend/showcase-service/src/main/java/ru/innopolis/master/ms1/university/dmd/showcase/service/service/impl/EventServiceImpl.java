@@ -124,4 +124,8 @@ public class EventServiceImpl implements EventService {
         return eventDaoImpl.findTopActivityUsers();
     }
 
+    @Override
+    public List<EventDTO> searchEvent(String text) {
+        return eventDaoImpl.searchEvent(text);
+    }
 }
